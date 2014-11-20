@@ -1,0 +1,94 @@
+@(name:String, qmap:Map[String,Object])
+@name match {
+	case "AuthController.group" =>{
+	select t.id  resourceId,
+		   t.name resourceName,
+		   rc.id resourceCategoryId,
+		   t.resource_type resourceType,
+		   t.seq_no seqNo,
+		   t.url_pattern urlPattern
+		from (	
+		  	SELECT rs.*
+			  FROM crm_resource rs,
+			       crm_org_function of
+			 WHERE of.organization_id = :orgId
+			   AND of.function_code = rs.function_code
+			   AND rs.deleted = False
+			   AND of.deleted = False
+			   and rs.group_enabled = true
+			UNION ALL   
+			SELECT rs.*
+			  FROM crm_resource rs
+			 WHERE rs.function_code is null
+			   AND rs.deleted = False
+			   and rs.group_enabled = true) t , crm_resource_category rc
+	where 1=1
+		and t.resource_category_id = rc.id
+		order by t.seq_no desc
+	}																												
+  
+	case "AuthController.his" =>{
+	  	select t.id  resourceId,
+			   t.name resourceName,
+			   rc.id resourceCategoryId,
+			   t.resource_type resourceType,
+			   t.seq_no seqNo,
+			   t.url_pattern urlPattern
+			from (	
+			  	SELECT rs.*
+				  FROM crm_resource rs,
+				       crm_org_function of
+				 WHERE of.organization_id = :orgId
+				   AND of.function_code = rs.function_code
+				   AND rs.deleted = False
+				   AND of.deleted = False
+				   and rs.hospital_enabled = true
+				UNION ALL   
+				SELECT rs.*
+				  FROM crm_resource rs
+				 WHERE rs.function_code is null
+				   AND rs.deleted = False
+				   and rs.hospital_enabled = true) t , crm_resource_category rc
+		where 1=1
+			and t.resource_category_id = rc.id
+			order by t.seq_no desc
+    }
+	  
+    case "AuthController.user" =>{
+	  	select t.id  resourceId,
+			   t.name resourceName,
+			   rc.id resourceCategoryId,
+			   t.resource_type resourceType,
+			   t.seq_no seqNo,
+			   t.url_pattern urlPattern
+			from (	
+			  	SELECT rs.*
+				  FROM crm_resource rs,
+				       crm_org_function of,
+				       crm_role_resource rr,
+				       crm_user us
+				 WHERE of.organization_id = :orgId
+				   AND us.id = :userId
+				   AND of.function_code = rs.function_code
+				   AND rs.id = rr.resource_id
+				   AND rr.role_id = us.role_id
+				   AND rs.deleted = False
+				   AND of.deleted = False
+				   AND rr.deleted = False
+				UNION ALL   
+				SELECT rs.*
+				  FROM crm_resource rs,
+				       crm_role_resource rr,
+				       crm_user us
+				 WHERE rs.function_code is null
+				   AND us.id = :userId
+				   AND rs.id = rr.resource_id
+				   AND rr.role_id = us.role_id
+				   AND rs.deleted = False
+				   AND rr.deleted = False ) t , crm_resource_category rc
+		where 1=1
+			and t.resource_category_id = rc.id
+			order by t.seq_no desc
+    }
+  
+}

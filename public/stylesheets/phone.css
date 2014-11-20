@@ -1,0 +1,131 @@
+body,.phone{ background:#C9E4EF;}
+.phone-header{ background:url(http://i1.hdfimg.com/mobi/images/phone09.jpg) repeat-x; height:60px; line-height:60px;}
+.phone-item-inner{ width:960px; margin-left:auto; margin-right:auto;}
+.phone-item-inner1{ width:800px;margin-right:auto;}
+.phone-item-inner2{ margin-left:auto;}
+.phone-logo a{ line-height:60px; display:block;}
+.phone-menu li{ float:left; _display:inline;}
+.phone-menu li.active{ background:url(http://i1.hdfimg.com/mobi/images/phone03.jpg) no-repeat left center #1896C7;}
+.phone-menu li a{ display:block; font-size:18px; color:#0A7299; padding-right:9px;}
+.phone-menu li a span{ display:block; padding-left:9px;}
+.phone-menu li a:hover{ text-decoration:none; background:url(http://i1.hdfimg.com/mobi/images/phone04.jpg) no-repeat right center #1896C7; color:#B8E5F2;}
+.phone-menu li a:hover span{ background:url(http://i1.hdfimg.com/mobi/images/phone03.jpg) no-repeat left center;}
+.phone-menu li a.active{ background:url(http://i1.hdfimg.com/mobi/images/phone04.jpg) no-repeat right center #1896C7; color:#B8E5F2;}
+.phone-menu li a.active span{ background:url(http://i1.hdfimg.com/mobi/images/phone03.jpg) no-repeat left center;}
+.phone-menu .new{ top:0px; right: 10px;}
+.phone-download{ background:url(http://i1.hdfimg.com/mobi/images/phone01.png); height:400px;}
+.phone-image{ background:url(http://i1.hdfimg.com/mobi/images/phone02.jpg) no-repeat 218px 17px; height:400px;}
+.phone-download-t{ font-size:48px;color:#0A7299;}
+.slogan li{ padding-left:20px; background:url(http://i1.hdfimg.com/mobi/images/phone10.gif) no-repeat left center; font-size:25px; color:#0A7299; height:60px; line-height:60px;}
+.download-btn a{ display:inline-block; width:192px; height:37px; background:url(http://i1.hdfimg.com/mobi/images/btn.png) no-repeat; _background:url(http://i1.hdfimg.com/mobi/images/btng.gif) no-repeat;}
+.download-btn a.download-iphone{ background-position:-209px 0px;}
+.download-btn a.download-android{ background-position:0px 0px;}
+.download-btn a.download-iphone:hover{ background-position:-209px -40px;}
+.download-btn a.download-android:hover{ background-position:0px -40px;}
+.phone-list{width:980px; margin-left:auto; margin-right:auto; }
+.phone-list-box{ width:285px;}
+.subLogo{background:url(http://i1.hdfimg.com/mobi/images/phone06.jpg) no-repeat;}
+.subLogo-position1{ width:90px; height:113px; background-position:0px 0px;}
+.subLogo-position2{ width:90px; height:113px; background-position:-100px 0px;}
+.subLogo-position3{ width:90px; height:113px; background-position:-200px 0px;}
+.subLogo-position4{ width:90px; height:113px; background-position:-400px 0px;}
+.subLogo-position5{ width:90px; height:113px; background-position:-300px 0px;}
+.phone-notice{ background:#B0E2F3; border-top:1px dashed #2D88AA; border-bottom:1px dashed #2D88AA; padding:10px 0px;}
+.phone-notice-c{ padding-left:25px;background:url(http://i1.hdfimg.com/mobi/images/phone07.jpg) no-repeat; 3px center;}
+.close{ right:-20px; top:10px;}
+.phone-footer{ width:960px;margin-left:auto;margin-right:auto; padding:15px 0px;}
+.phone-footer a{ color:#0A7299;}
+
+
+.phone-blue{color:#0A7299;}
+.phone-gray{color:#666;}
+.oh{ overflow:hidden;}
+.f25{ font-size:25px;}
+.f36{ font-size:36px;}
+.f64{ font-size:64px;}
+.f48{ font-size:48px;}
+.f52{ font-size:52px;}
+.f95{ font-size:95px;}
+.w260{ width:260px;}
+.w275{ width:275px;}
+.w340{ width:340px;}
+.w385{ width:385px;}
+.w485{ width:485px;}
+.w960{ width:960px;}
+.lh60{ line-height:60px;}
+.lh100{ line-height:100px;}
+.hasbb{ background: url(http://i1.hdfimg.com/mobi/images/iphone04.jpg) no-repeat center bottom;}
+.bt{ border-top:1px dashed #2d88aa;}
+.bb{ border-bottom:1px dashed #2d88aa;}
+/*
+ *
+ *  ** temp
+ *
+ *  */
+.phone-box{ border:1px solid #abd1da; background:#dbebef;}
+.phone-box-download{ padding:40px;}
+
+
+.iphone-imgShow{ width:226px; height:445px; background:url(http://i1.hdfimg.com/mobi/images/iphone01.jpg) no-repeat;}
+.android-imgShow{ width:200px; height:445px; background:url(http://i1.hdfimg.com/mobi/images/android01.jpg) no-repeat;}
+.iphone-imgShow-box{ width:171px; height:255px; overflow:hidden; left:25px; top:70px;}
+.android-imgShow-box{ width:163px; height:272px; overflow:hidden; left:19px; top:44px;}
+.pages-i{ top:410px; left:15px;}
+.pages-a{ top:410px; left:6px;}
+.pages span{ display:inline-block; height:23px;}
+.pages span.prev{ background:url(http://i1.hdfimg.com/mobi/images/iphone08.jpg) no-repeat; width:72px; cursor:pointer;}
+.pages span.next{ background:url(http://i1.hdfimg.com/mobi/images/iphone08.jpg) no-repeat right top; width:72px; cursor:pointer;}
+.pages span.num{ vertical-align:top; padding:0px 5px;}
+
+
+.download-details{ width:620px;}
+.download-details-t{ border-bottom:1px dashed #2d88aa; padding-left:15px;}
+.version-corner{ vertical-align:top;}
+.download-btn-i{ background: url(http://i1.hdfimg.com/mobi/images/btn.png) no-repeat scroll 0 0 transparent;height: 37px;width: 192px;}
+* html .download-btn-i{ background: url(http://i1.hdfimg.com/mobi/images/btng.gif) no-repeat scroll 0 0 transparent;height: 37px;width: 192px;}
+* a.download-btn-i{ background-position: -209px 0;}
+* a.download-btn-i:hover{ background-position: -209px -40px;}
+* .download-btn-a{ background: url(http://i1.hdfimg.com/mobi/images/btn.png) no-repeat scroll 0 0 transparent;height: 37px;width: 192px;}
+* * html .download-btn-a{ background: url(http://i1.hdfimg.com/mobi/images/btng.gif) no-repeat scroll 0 0 transparent;height: 37px;width: 192px;}
+* a.download-btn-a{ background-position: 0px 0px;}
+* a.download-btn-a:hover{ background-position: 0px -40px;}
+* .details-title{ padding-left:15px; background: url(http://i1.hdfimg.com/mobi/images/phone10.gif) no-repeat left center;}
+* .td-notice{ vertical-align:-8px;}
+* .functionShow-t{ background:url(http://i1.hdfimg.com/mobi/images/iphone07.jpg) repeat-x; height:46px; line-height:46px; border:1px solid #abd1da; border-bottom:none;}
+* .intro-item{ padding:50px 75px; }
+* .intro-item-num{ color:#fff; font-size:60px; padding:0px 5px; background:#0a7299; vertical-align:3px; overflow:hidden; zoom:1}
+* .cooperDownload{ display:inline-block; width:121px; height:29px; line-height:29px;color:#999; text-align:center; background:url(http://i1.hdfimg.com/mobi/images/iphone03.jpg?20120411) no-repeat;}
+* .cooperDownload:hover{ background:url(http://i1.hdfimg.com/mobi/images/iphone03.jpg?20120411) 0px -29px no-repeat; text-decoration:none;}
+* .sendsms{top:42px; left:10px;}
+* .phone-noticeboard{ margin-left:10px; text-indent:-8px;}
+* .download-btn-wdj{ background:url(http://i1.hdfimg.com/mobi/images/wdj_btn.gif) no-repeat left -37px;  width:191px; height:37px; line-height:37px; text-align:center; font-size:19px; color:#999;}
+* .download-btn-wdj:hover{ text-decoration:none; background:url(http://i1.hdfimg.com/mobi/images/wdj_btn.gif) no-repeat left top;}
+*
+*
+*
+*/*
+
+ **iPadDoctor
+
+ */
+.w240{ width:240px;}
+.w300{ width:300px;}
+.w550{ width:550px;}
+.iPadDoc-imgShow{ width:350px; height:310px; background:url(http://i1.hdfimg.com/mobi/images/ipaddoctor01.jpg) no-repeat;}
+.iPadDoc-plr20{ padding-left:20px; padding-right:20px;}
+.iPadDoc-imgShow-box{ width:280px; height:213px; overflow:hidden; left:36px; top:38px;}
+.pages-iPadDoc{ left:75px; top:310px;}
+.iPadDoc-download-btn{ display: inline-block; text-indent: -9999px; width:202px; height:72px; background-image:url(../images/ipaddoctor02.png); background-repeat: no-repeat;}
+.iPadDoc-download-iTuns{ background-position: 0px 0px;}
+.iPadDoc-download-iTuns:hover{ background-position: 0px -72px;}
+.iPadDoc-download-PC{ background-position: -202px 0px;}
+.iPadDoc-download-PC:hover{ background-position: -202px -72px;}
+
+/*
+ *
+ *  **sendBtn
+ *
+ *  */
+#mobile{ padding-left:10px; width:155px; height:30px; line-height: 30px; background:url(http://i1.hdfimg.com/mobi/images/sendText.jpg) no-repeat; border:none; font-size: 14px;}
+#sendBtn{ width:80px; height:30px; line-height: 30px;  text-align:center; background:url(../images/sendBtn.png) no-repeat; font-size: 15px; font-family: 'Î¢ÈíÑÅºÚ'; color:#fff;}
+#sendBtn:hover{ text-decoration: none; background:url(../images/sendBtn.png) no-repeat 0px -30px;}

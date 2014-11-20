@@ -1,0 +1,12 @@
+body,ul,ol,dl,dt,dd,li,p,h1,h2,h3,h4,h5,h6,form,fieldset,table,th,td,img,div,input,textarea{margin:0;padding:0;}
+ul,ol,li{list-style-type:none;}
+.download-btn a.download-iphone{ background-position:-209px 0px;}
+.download-btn a.download-android{ background-position:0px 0px;}
+.phone{ background:#C9E4EF;}
+.phone-download-t{ font-size:48px;color:#0A7299;}
+.f-yahei{font-family:'Î¢ÈíÑÅºÚ';}
+.cp{cursor:pointer;}
+.ml20{margin-left:20px;}
+.ml72{margin-left:76px;}
+.mt10{margin-top: 10px;}
+.mr10{margin-right: 10px;}

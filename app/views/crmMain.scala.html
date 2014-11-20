@@ -1,0 +1,56 @@
+@(body: Html)
+@import play.api.Play.current;
+@import play.api.Play;
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>@Play.application.configuration.getString("server.name")</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- The styles 存放全局的样式文件 -->
+    @css()
+	@script()
+</head>
+
+<body>
+		<!-- topbar starts -->
+	<div class="navbar">
+		@top()
+	</div>
+	<!-- topbar ends -->
+		<div class="container-fluid">
+		<div class="row-fluid">
+				
+			<!-- left menu starts -->
+			<div class="span2 main-menu-span" >
+				<div class="well nav-collapse sidebar-nav">
+					<ul class="nav nav-tabs nav-stacked main-menu">
+
+					</ul>
+				</div><!--/.well -->
+			</div><!--/span-->
+			<!-- left menu ends -->
+			
+			<div id="content" class="span10">
+			@body
+			</div><!--/#content.span10-->
+				</div><!--/fluid-row-->
+				
+		<hr>
+
+		
+		
+	</div><!--/.fluid-container-->
+
+	
+	 
+	
+	
+	
+	
+	
+	
+	<div id="confirmDiv"></div>
+</body>
+</html>
