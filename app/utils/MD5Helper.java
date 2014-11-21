@@ -1,12 +1,9 @@
 package utils;
 
 /**
- * 
- * <p>Project: crm</p>
- * <p>Description: MD5加密类</p>
- * <p>Copyright (c) 2005-2013 Wilmar Technology (Shanghai) Co., Ltd.</p>
- * <p>All Rights Reserved.</p>
- * @author <a href="mailto:changsichong@wcs-global.com">Chang Sichong</a>
+ * MD5加密
+ * @author Administrator
+ *
  */
 public class MD5Helper {
 
@@ -17,10 +14,9 @@ public class MD5Helper {
 
 	public String encryptPrefix(String str) {
 
-		return this.getMD5ofStr("crm" + str);
+		return this.getMD5ofStr("meng" + str);
 	}
 
-	
 
 	/*
 	 * 下面这些S11-S44实际上是一个4*4的矩阵，在原始的C实现中是用#define 实现的， 这里把它们实现成为static

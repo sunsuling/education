@@ -10,6 +10,8 @@ import java.math.BigDecimal;
 import java.text.DecimalFormat;
 import java.util.Collection;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 
 
@@ -387,5 +389,23 @@ public class ValueHelper {
 		sb.append(rightSpace);
 		
 		return sb.toString();
+	}
+	
+	/**
+	 * 去掉参数中的空字段
+	 * @param params
+	 */
+	public static void resetParams(Map<String, String> params) {
+		if (params == null) {
+			return;
+		}
+
+		Set<String> keySet = params.keySet();
+		for (String key : keySet) {
+			String value = params.get(key);
+			if (ValueHelper.isEmpty(value)) {
+				params.put(key, null);
+			}
+		}
 	}
 }

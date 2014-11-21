@@ -27,9 +27,26 @@ create table ACCIDENT_LETTERS (
   constraint pk_ACCIDENT_LETTERS primary key (id))
 ;
 
+create table account_user (
+  id                        varchar(255) not null,
+  created_by                varchar(255),
+  created_at                timestamp,
+  updated_by                varchar(255),
+  updated_at                timestamp,
+  deleted                   boolean,
+  username                  varchar(255),
+  pwd                       varchar(255),
+  ip                        varchar(255),
+  lock                      boolean,
+  account_type              integer,
+  constraint pk_account_user primary key (id))
+;
+
 create sequence ACCIDENT_ANALYSIS_seq;
 
 create sequence ACCIDENT_LETTERS_seq;
+
+create sequence account_user_seq;
 
 
 
@@ -40,7 +57,11 @@ drop table if exists ACCIDENT_ANALYSIS cascade;
 
 drop table if exists ACCIDENT_LETTERS cascade;
 
+drop table if exists account_user cascade;
+
 drop sequence if exists ACCIDENT_ANALYSIS_seq;
 
 drop sequence if exists ACCIDENT_LETTERS_seq;
+
+drop sequence if exists account_user_seq;
 
