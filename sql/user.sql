@@ -1,7 +1,3 @@
-# --- Created by Ebean DDL
-# To stop Ebean DDL generation, remove this comment and start using Evolutions
-
-# --- !Ups
 create table account_user(
   id                        uuid not null ,-- 主键 
   created_by                varchar(255) ,-- 创建人
@@ -18,4 +14,17 @@ create table account_user(
 ;
 create sequence user_seq;
 
-# --- !Downs
+
+create table contact(
+  id                        uuid not null ,-- 主键 
+  created_by                varchar(255) ,-- 创建人
+  created_at                timestamp ,-- 创建时间
+  updated_by                varchar(255) ,-- 更新人
+  updated_at                timestamp ,-- 更新时间
+  deleted                   boolean default false,-- 是否删除
+  address                   varchar(255) ,-- 用户名
+  phone	                    varchar(255) ,-- 电话
+  contact_name				varchar(255), -- 联系人姓名
+  constraint pk_contact primary key (id))
+;
+create sequence contact_seq;
