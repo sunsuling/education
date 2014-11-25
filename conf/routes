@@ -21,4 +21,10 @@ POST        /assets/*file                controllers.Assets.at(path="/public", f
 POST  /education/admin/dologin  controllers.ApplicationController.doLogin
 
 # 联系我们
-GET /education/admin/contact  controllers.ContactController.contact
+GET   /education/admin/contact                 controllers.ContactController.contact
+
+# 事故快报
+GET   /education/admin/accidentLetters             controllers.AccidentLettersController.list()
+GET   /education/admin/accidentLetters/listrs      controllers.AccidentLettersController.listRs(sEcho,iDisplayStart,iDisplayLength)
+GET   /education/admin/accidentLetters/add		   controllers.AccidentLettersController.add()
+POST  /education/admin/accidentLetters/save        controllers.AccidentLettersController.save()

@@ -1,3 +1,27 @@
+create table ACCIDENT_ANALYSIS (
+  id                        varchar(255) not null,
+  created_by                varchar(255),
+  created_at                timestamp,
+  updated_by                varchar(255),
+  updated_at                timestamp,
+  deleted                   boolean,
+  message                   varchar(255),
+  message_url               varchar(255),
+  constraint pk_ACCIDENT_ANALYSIS primary key (id))
+;
+
+create table ACCIDENT_LETTERS (
+  id                        varchar(255) not null,
+  created_by                varchar(255),
+  created_at                timestamp,
+  updated_by                varchar(255),
+  updated_at                timestamp,
+  deleted                   boolean,
+  message                   varchar(255),
+  detail                    text,
+  constraint pk_ACCIDENT_LETTERS primary key (id))
+;
+
 create table account_user(
   id                        uuid not null ,-- 主键 
   created_by                varchar(255) ,-- 创建人

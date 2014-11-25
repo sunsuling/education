@@ -1,21 +1,21 @@
 package controllers;
 
+import static play.data.Form.form;
+
 import java.util.Map;
-
-
-
-
-
-import com.avaje.ebean.ExpressionList;
+import java.util.UUID;
 
 import models.AccountUser;
 
+import play.Play;
+import play.cache.Cache;
 import play.mvc.Controller;
 import play.mvc.Result;
 import utils.MD5Helper;
 import utils.ValueHelper;
+import bean.UserSession;
 
-import static play.data.Form.form;
+import com.avaje.ebean.ExpressionList;
 
 public class ApplicationController extends Controller {
 	public static Result index(){
@@ -45,6 +45,18 @@ public class ApplicationController extends Controller {
 			return redirect("/");
 		}else if(user.accountType == 2){
 			// 管理员登陆
+			UserSession us = new UserSession();
+			us.userId = user.id.toString();
+			us.name = user.username;
+			
+			session("education_webtoken",UUID.randomUUID().toString());
+			session("education_crmwebtime",
+					String.valueOf(System.currentTimeMillis()));
+			Cache.set(
+					"user_" + session("education_webtoken"),
+					us,
+					Integer.valueOf(Play.application().configuration()
+							.getString("session.timeout")));
 			return ok(views.html.admin.render());
 		}
 		

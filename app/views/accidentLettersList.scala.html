@@ -1,0 +1,174 @@
+@crmMain{
+	<link href="@routes.Assets.at("module/bootstrap/css/TableTools.css")" rel='stylesheet'>	
+			<div>
+				<ul class="breadcrumb">
+					<li>
+						<a href="">首页</a> <span class="divider">/</span>
+					</li>
+					<li>
+						<a href="#">事故快报维护</a>
+					</li>
+				</ul>
+			</div>
+
+			<div id="gridwrap" class="row-fluid sortable">		
+				<div class="box span12">
+					<div class="box-header well" data-original-title>
+						<h2><i class="icon-user"></i>事故快报维护</h2>
+						<div class="box-icon">
+							<a href="#" class="btn btn-minimize btn-round"><i class="icon-chevron-up"></i></a>
+						</div>
+					</div>
+					<div class="box-content" style="word-break:break-all; word-wrap:break-word">
+						<table cellpadding="0" cellspacing="0" border="0"  class="table table-striped table-bordered" id="lettersAccidentTable"  >
+							<thead>
+								<tr class="tablethreadbutton">
+									<th>
+										<button class="btn btn-small" onclick="add()"><i class="icon-plus"></i>新增</button>
+									</th>
+								</tr>
+								<tr>
+									<th>操作</th>
+									<th>事故快报名称</th>
+									<th>事故快报详细</th>
+									<th>创建时间</th>
+									<th>修改时间</th>
+									<th>可用</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td colspan="6" class="dataTables_empty">Loading data from server</td>
+								</tr>
+							</tbody>
+							<tfoot>
+								<tr class="tablefootbutton">
+									<th>
+										<button class="btn btn-small" onclick="add()"><i class="icon-plus"></i>新增</button>
+									</th>
+								</tr>
+							</tfoot>
+						</table>
+						       
+					</div>
+				</div>
+			</div>
+    <script src="@routes.Assets.at("module/bootstrap/js/TableTools.min.js")"></script>
+    <script>
+	    Shadowbox.init({
+			 handleOversize: "drag",
+			 modal: true
+		});
+	    
+	    // 编辑
+	    function edit(id){
+	    	 Shadowbox.open({
+			        content:     "/crm/web/cardtype/edit?id="+id,
+			        player:     "iframe",
+			        title:      "编辑就诊卡类型信息",
+			        height:     520,
+			        width:      600
+			    });	
+	    }
+	    
+	    <!-- 提示信息-->
+		 function alertrs(status,msg){
+			 noty({
+			  		text: msg,
+			  		type: status,
+			        dismissQueue: true,
+			  		layout: 'center',
+			  		timeout:500,
+			  		theme: 'defaultTheme'
+			});
+		}
+	    
+		 <!-- 刷新表格-->
+	    function greload(){
+	    	table.fnDraw();
+	    }
+	    
+	    // 新增
+	    function add(){
+	    	Shadowbox.open({
+		        content:     "/education/admin/accidentLetters/add",
+		        player:     "iframe",
+		        title:      "新增事故快报信息",
+		        height:     520,
+		        width:      600
+		    });	
+	    }
+	    
+	   // 删除
+	   function del(id,isDel){
+		   fconfirm = false;
+				message = '';
+				if(isDel == 'true'){
+					message = '确认恢复？'
+				}else{
+					message = '确定删除？'
+				}
+				$('#confirmDiv').confirmModal({
+					heading:'确认信息',
+					body:message,
+					callback: function() {
+						$.post("/crm/web/cardtype/delete?id="+id+"&isDel="+isDel, null,function(data){
+							greload();
+							if(isDel == 'true'){
+								alertrs("success","恢复成功");
+							}else{
+								alertrs("success","删除成功");
+							}
+						});	  
+						
+					}
+				});
+	   }
+	    
+	    // 初始化表格
+	    var table = $('#lettersAccidentTable').dataTable( {
+			"sDom": "T<'clear'><'row'<'span6'l><'span6'f>r>t<'row'<'span6'i><'span6'p>>",
+			"bProcessing": true,
+			"bServerSide": true,
+			"bFilter": true,
+			"sScrollX": "100%",
+		    "bScrollCollapse": true,
+			"sAjaxSource": "/education/admin/accidentLetters/listrs",
+			"sPaginationType": "bootstrap",
+			"bSort": false, //排序功能
+			"aoColumns": [
+				{ "mData": "id" ,"sWidth": "80px"},
+				{ "mData": "message" ,"sWidth": "100px"},
+				{ "mData": "detail" },
+				{ "mData": "createdAt","sWidth": "120px" },
+				{ "mData": "updatedAt" ,"sWidth": "120px"},
+				{ "mData": "deleted" ,"sWidth": "30px"},
+			],
+			 "oTableTools": {
+					"sRowSelect": "single",
+					"aButtons":[]
+				},
+			"fnServerParams": function ( aoData ) {
+				    aoData.push( );
+			   },
+			 "fnRowCallback": function( nRow, aData, iDisplayIndex ) {
+				   var isdel;
+				   var image;
+				   if(aData.deleted == true){
+					   isdel = "恢复";
+					  image = 'icon-repeat';
+				   }else{
+					   isdel = '删除';
+					   image = 'icon-trash';
+				   }
+				   $('td:eq(0)', nRow).html('<i class="icon-edit" title="编辑" onclick="edit(&quot;'+aData.id+'&quot;)" ></i><i class="'+image+'" onclick="del(&quot;'+aData.id+'&quot;,&quot;'+aData.deleted+'&quot;)" title="'+isdel+'"/>');
+				 	 if(aData.deleted == true){
+				 		$('td:eq(5)', nRow).html("");
+				 	 }else{
+						 $('td:eq(5)', nRow).html("<i class='icon-ok' title='可用'></i>");
+				 	 }
+				 	 
+	 		 },
+		});
+    </script>
+}
