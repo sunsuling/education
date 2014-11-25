@@ -6,7 +6,7 @@ create table ACCIDENT_ANALYSIS (
   updated_at                timestamp,
   deleted                   boolean,
   message                   varchar(255),
-  message_url               varchar(255),
+  detail               		text,
   constraint pk_ACCIDENT_ANALYSIS primary key (id))
 ;
 

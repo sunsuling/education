@@ -28,3 +28,9 @@ GET   /education/admin/accidentLetters             controllers.AccidentLettersCo
 GET   /education/admin/accidentLetters/listrs      controllers.AccidentLettersController.listRs(sEcho,iDisplayStart,iDisplayLength)
 GET   /education/admin/accidentLetters/add		   controllers.AccidentLettersController.add()
 POST  /education/admin/accidentLetters/save        controllers.AccidentLettersController.save()
+
+# 事故案例分析
+GET  /education/admin/accidentAnalysis             controllers.AccidentAnalysisController.list()
+GET  /education/admin/accidentAnalysis/listrs       controllers.AccidentAnalysisController.listRs(sEcho,iDisplayStart,iDisplayLength)
+GET   /education/admin/accidentAnalysis/add		   controllers.AccidentAnalysisController.add()
+POST  /education/admin/accidentAnalysis/save        controllers.AccidentAnalysisController.save()

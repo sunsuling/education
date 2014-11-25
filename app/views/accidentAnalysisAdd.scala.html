@@ -9,19 +9,19 @@
 			<div class="row-fluid sortable">
 				<div class="box span12">
 					<div class="box-header well" data-original-title>
-						<h2><i class="icon-edit"></i>事故快报信息</h2>
+						<h2><i class="icon-edit"></i>事故案例分析信息</h2>
 						
 					</div>
 					<div class="box-content">
 						<form class="form-horizontal" id="form">
 							<div class="control-group">
-							  <label class="control-label">事故快报名称<font color="red">*</font></label>
+							  <label class="control-label">事故案例分析名称<font color="red">*</font></label>
 							  <div class="controls">
 									<input type="text"  id="message" name="message" maxlength="300">
 							  </div>
 							</div>
 							<div class="control-group">
-							  <label class="control-label">事故快报详细信息<font color="red">*</font></label>
+							  <label class="control-label">事故案例分析详细信息<font color="red">*</font></label>
 							  <div class="controls">
 							  		<textarea   id="detail" name="detail" rows="3" ></textarea>
 							  </div>
@@ -56,16 +56,16 @@
 			
 			 if(message ==null ||message == ""){ 
 				 $("#message").focus();
-				 alerterror("事故快报名称必须填写！");
+				 alerterror("事故案例分析名称必须填写！");
 				 return false;
 			 }
 			 
 			  if(detail == null ||  detail ==""){
-				  alerterror("事故快报详细信息必须填写！");
+				  alerterror("事故案例分析信息必须填写！");
 				  $("#detail").focus();
 				  return false;
 			  }
-			$.post("/education/admin/accidentLetters/save", $("#form").serialize(),function(data){
+			$.post("/education/admin/accidentAnalysis/save", $("#form").serialize(),function(data){
 					if("REPEATCODE" == data.responseCode){
 						 $("#message").focus();
 						alerterror("事故快报名称已存在！");
