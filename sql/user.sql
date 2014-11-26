@@ -1,3 +1,4 @@
+-- 事故案例分析
 create table ACCIDENT_ANALYSIS (
   id                        varchar(255) not null,
   created_by                varchar(255),
@@ -10,6 +11,7 @@ create table ACCIDENT_ANALYSIS (
   constraint pk_ACCIDENT_ANALYSIS primary key (id))
 ;
 
+-- 事故快报
 create table ACCIDENT_LETTERS (
   id                        varchar(255) not null,
   created_by                varchar(255),
@@ -21,7 +23,7 @@ create table ACCIDENT_LETTERS (
   detail                    text,
   constraint pk_ACCIDENT_LETTERS primary key (id))
 ;
-
+-- 用户
 create table account_user(
   id                        uuid not null ,-- 主键 
   created_by                varchar(255) ,-- 创建人
@@ -38,7 +40,7 @@ create table account_user(
 ;
 create sequence user_seq;
 
-
+-- 联系人
 create table contact(
   id                        uuid not null ,-- 主键 
   created_by                varchar(255) ,-- 创建人
@@ -52,3 +54,18 @@ create table contact(
   constraint pk_contact primary key (id))
 ;
 create sequence contact_seq;
+
+-- 法律
+create table law (
+  id                        varchar(255) not null,
+  created_by                varchar(255),
+  created_at                timestamp,
+  updated_by                varchar(255),
+  updated_at                timestamp,
+  deleted                   boolean,
+  title                     varchar(255),
+  detail                    text,
+  effective_at			    timestamp ,-- 法律生效时间
+  constraint PK_LAW primary key (id))
+;
+create sequence law_seq;

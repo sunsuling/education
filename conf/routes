@@ -30,7 +30,15 @@ GET   /education/admin/accidentLetters/add		   controllers.AccidentLettersContro
 POST  /education/admin/accidentLetters/save        controllers.AccidentLettersController.save()
 
 # 事故案例分析
-GET  /education/admin/accidentAnalysis             controllers.AccidentAnalysisController.list()
+GET  /education/admin/accidentAnalysis             	controllers.AccidentAnalysisController.list()
 GET  /education/admin/accidentAnalysis/listrs       controllers.AccidentAnalysisController.listRs(sEcho,iDisplayStart,iDisplayLength)
-GET   /education/admin/accidentAnalysis/add		   controllers.AccidentAnalysisController.add()
+GET   /education/admin/accidentAnalysis/add		   	controllers.AccidentAnalysisController.add()
 POST  /education/admin/accidentAnalysis/save        controllers.AccidentAnalysisController.save()
+
+# 法律
+GET   /education/admin/law              			controllers.LawController.list()
+GET   /education/admin/law/listrs       			controllers.LawController.listRs(sEcho,iDisplayStart,iDisplayLength)
+GET   /education/admin/law/add		    			controllers.LawController.add()
+POST  /education/admin/law/save         			controllers.LawController.save()
+GET   /education/admin/law/edit						controllers.LawController.edit(id)
+POST  /education/admin/law/update					controllers.LawController.update()

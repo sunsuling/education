@@ -3,10 +3,10 @@
 			<div>
 				<ul class="breadcrumb">
 					<li>
-						<a href="#">首页</a> <span class="divider">/</span>
+						<a href="">首页</a> <span class="divider">/</span>
 					</li>
 					<li>
-						<a href="#">事故案例分析</a>
+						<a href="#">法律维护</a>
 					</li>
 				</ul>
 			</div>
@@ -14,13 +14,13 @@
 			<div id="gridwrap" class="row-fluid sortable">		
 				<div class="box span12">
 					<div class="box-header well" data-original-title>
-						<h2><i class="icon-user"></i>事故案例分析</h2>
+						<h2><i class="icon-user"></i>法律维护</h2>
 						<div class="box-icon">
 							<a href="#" class="btn btn-minimize btn-round"><i class="icon-chevron-up"></i></a>
 						</div>
 					</div>
 					<div class="box-content" style="word-break:break-all; word-wrap:break-word">
-						<table cellpadding="0" cellspacing="0" border="0"  class="table table-striped table-bordered" id="accidentAnalysisTable"  >
+						<table cellpadding="0" cellspacing="0" border="0"  class="table table-striped table-bordered" id="lawTable"  >
 							<thead>
 								<tr class="tablethreadbutton">
 									<th>
@@ -29,8 +29,9 @@
 								</tr>
 								<tr>
 									<th>操作</th>
-									<th>事故案例分析名称</th>
-									<th>事故案例分析详细</th>
+									<th>法律生效时间</th>
+									<th>法律名称</th>
+									<th>法律详细</th>
 									<th>创建时间</th>
 									<th>修改时间</th>
 									<th>可用</th>
@@ -63,9 +64,9 @@
 	    // 编辑
 	    function edit(id){
 	    	 Shadowbox.open({
-			        content:     "/crm/web/cardtype/edit?id="+id,
+			        content:     "/education/admin/law/edit?id="+id,
 			        player:     "iframe",
-			        title:      "编辑事故案例分析信息",
+			        title:      "编辑法律信息",
 			        height:     520,
 			        width:      800
 			    });	
@@ -91,9 +92,9 @@
 	    // 新增
 	    function add(){
 	    	Shadowbox.open({
-		        content:     "/education/admin/accidentAnalysis/add",
+		        content:     "/education/admin/law/add",
 		        player:     "iframe",
-		        title:      "新增事故案例分析信息",
+		        title:      "新增法律信息",
 		        height:     520,
 		        width:      800
 		    });	
@@ -126,19 +127,20 @@
 	   }
 	    
 	    // 初始化表格
-	    var table = $('#accidentAnalysisTable').dataTable( {
+	    var table = $('#lawTable').dataTable( {
 			"sDom": "T<'clear'><'row'<'span6'l><'span6'f>r>t<'row'<'span6'i><'span6'p>>",
 			"bProcessing": true,
 			"bServerSide": true,
 			"bFilter": true,
 			"sScrollX": "100%",
 		    "bScrollCollapse": true,
-			"sAjaxSource": "/education/admin/accidentAnalysis/listrs",
+			"sAjaxSource": "/education/admin/law/listrs",
 			"sPaginationType": "bootstrap",
 			"bSort": false, //排序功能
 			"aoColumns": [
 				{ "mData": "id" ,"sWidth": "80px"},
-				{ "mData": "message" ,"sWidth": "100px"},
+				{ "mData": "effectiveAt","sWidth": "120px" },
+				{ "mData": "title" ,"sWidth": "100px"},
 				{ "mData": "detail" },
 				{ "mData": "createdAt","sWidth": "120px" },
 				{ "mData": "updatedAt" ,"sWidth": "120px"},
@@ -163,9 +165,9 @@
 				   }
 				   $('td:eq(0)', nRow).html('<i class="icon-edit" title="编辑" onclick="edit(&quot;'+aData.id+'&quot;)" ></i><i class="'+image+'" onclick="del(&quot;'+aData.id+'&quot;,&quot;'+aData.deleted+'&quot;)" title="'+isdel+'"/>');
 				 	 if(aData.deleted == true){
-				 		$('td:eq(5)', nRow).html("");
+				 		$('td:eq(6)', nRow).html("");
 				 	 }else{
-						 $('td:eq(5)', nRow).html("<i class='icon-ok' title='可用'></i>");
+						 $('td:eq(6)', nRow).html("<i class='icon-ok' title='可用'></i>");
 				 	 }
 				 	 
 	 		 },
