@@ -69,3 +69,18 @@ create table law (
   constraint PK_LAW primary key (id))
 ;
 create sequence law_seq;
+
+-- 行政法规
+create table regulation (
+  id                        varchar(255) not null,
+  created_by                varchar(255),
+  created_at                timestamp,
+  updated_by                varchar(255),
+  updated_at                timestamp,
+  deleted                   boolean,
+  title                     varchar(255),
+  detail                    text,
+  effective_at			    timestamp ,-- 行政法规生效时间
+  constraint PK_REGULATION primary key (id))
+;
+create sequence regulation_seq;
