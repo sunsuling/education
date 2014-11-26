@@ -22,18 +22,26 @@ POST  /education/admin/dologin  controllers.ApplicationController.doLogin
 
 # 联系我们
 GET   /education/admin/contact                 controllers.ContactController.contact
+POST /education/admin/saveinformation          controllers.ContactController.saveInformation
 
 # 事故快报
 GET   /education/admin/accidentLetters             controllers.AccidentLettersController.list()
 GET   /education/admin/accidentLetters/listrs      controllers.AccidentLettersController.listRs(sEcho,iDisplayStart,iDisplayLength)
 GET   /education/admin/accidentLetters/add		   controllers.AccidentLettersController.add()
 POST  /education/admin/accidentLetters/save        controllers.AccidentLettersController.save()
+GET  /education/admin/accidentLetters/edit	   	   controllers.AccidentLettersController.edit()
+POST  /education/admin/accidentLetters/update	   controllers.AccidentLettersController.update()
+POST  /education/admin/accidentLetters/del	   	   controllers.AccidentLettersController.del(id,isDel)
 
 # 事故案例分析
 GET  /education/admin/accidentAnalysis             	controllers.AccidentAnalysisController.list()
 GET  /education/admin/accidentAnalysis/listrs       controllers.AccidentAnalysisController.listRs(sEcho,iDisplayStart,iDisplayLength)
 GET   /education/admin/accidentAnalysis/add		   	controllers.AccidentAnalysisController.add()
 POST  /education/admin/accidentAnalysis/save        controllers.AccidentAnalysisController.save()
+GET  /education/admin/accidentAnalysis/edit	   	   controllers.AccidentAnalysisController.edit()
+POST  /education/admin/accidentAnalysis/update	   controllers.AccidentAnalysisController.update()
+POST  /education/admin/accidentAnalysis/del	   	   controllers.AccidentAnalysisController.del(id,isDel)
+
 
 # 法律
 GET   /education/admin/law              			controllers.LawController.list()
@@ -42,3 +50,4 @@ GET   /education/admin/law/add		    			controllers.LawController.add()
 POST  /education/admin/law/save         			controllers.LawController.save()
 GET   /education/admin/law/edit						controllers.LawController.edit(id)
 POST  /education/admin/law/update					controllers.LawController.update()
+POST  /education/admin/law/del	   	   				controllers.LawController.del(id,isDel)

@@ -143,4 +143,53 @@ public class AccidentLettersController extends Controller {
         return true;
     }
 
+    public static Result edit(){
+		Map<String, String> formmap = form().bindFromRequest().data();
+		String id = ValueHelper.isEmpty(formmap.get("id")) ? null : formmap.get("id").trim();
+		System.out.println(id);
+		AccidentLetters accidentLetters = null;
+		accidentLetters = AccidentLetters.find(UUID.fromString(id));
+		return ok(views.html.accidentLettersEdit.render(accidentLetters));
+	}
+	
+	public static Result update(){
+		Map<String, String> formmap = form().bindFromRequest().data();
+		String message = ValueHelper.isEmpty(formmap.get("message")) ? null
+				: formmap.get("message").trim();
+		String detail = ValueHelper.isEmpty(formmap.get("detail")) ? null
+				: formmap.get("detail");
+		String id = ValueHelper.isEmpty(formmap.get("id")) ? null
+				: formmap.get("id").trim();
+		
+		ObjectNode objectNode = Json.newObject();
+		response().setContentType("text/json;charset=UTF-8");
+		if (!checkRepeat(UUID.fromString(id), message)) {
+			objectNode.put("responseCode", ResponseCode.REPEATCODE.name());
+			return ok(objectNode.toString());
+		}
+		 
+		AccidentLetters accidentLetters = null;
+		Timestamp now = DateUtil.getCurrent();
+		
+		accidentLetters = AccidentLetters.find(UUID.fromString(id));
+		String userId = UserSession.getCurrent(session()).userId;
+		
+		accidentLetters.message = message;
+		accidentLetters.detail = detail;
+
+		accidentLetters.updatedAt = now;
+		accidentLetters.updatedBy = userId;
+
+		accidentLetters.save();
+
+		return ok(objectNode.toString());
+	}
+	
+	public static Result del(String id,String isDel){
+		AccidentLetters accidentLetters  = AccidentLetters.find(UUID.fromString(id));
+		accidentLetters.deleted = !Boolean.valueOf(isDel);
+		accidentLetters.update();
+		return ok();
+	}
+    
 }

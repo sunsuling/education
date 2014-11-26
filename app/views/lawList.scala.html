@@ -113,7 +113,7 @@
 					heading:'确认信息',
 					body:message,
 					callback: function() {
-						$.post("/crm/web/cardtype/delete?id="+id+"&isDel="+isDel, null,function(data){
+						$.post("/education/admin/law/del?id="+id+"&isDel="+isDel, null,function(data){
 							greload();
 							if(isDel == 'true'){
 								alertrs("success","恢复成功");

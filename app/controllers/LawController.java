@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
+import models.AccidentAnalysis;
 import models.Law;
 import models.Law;
 import play.libs.Json;
@@ -167,6 +168,20 @@ public class LawController extends Controller {
     	return ok(objectNode.toString());
     	
     }
+    
+    /**
+	 * 删除恢复操作
+	 * @param id
+	 * @param isDel
+	 * @return
+	 */
+	public static Result del(String id,String isDel){
+		Law law  = Law.find(UUID.fromString(id));
+		law.deleted = !Boolean.valueOf(isDel);
+		law.update();
+		return ok();
+	}
+
     
     /**
      * 验证重复性

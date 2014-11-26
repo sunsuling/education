@@ -1,3 +1,4 @@
+@(contact:Contact)
 @crmMain{
 <body>
 	<div>
@@ -14,14 +15,42 @@
 		<div class="span12">
 			<div class="box-content">
 						<form class="form-horizontal" id="infoForm">
+						@if(contact != null){
+							<input type="hidden" name="id" value="@contact.id" />
+						}else{
+							<input type="hidden" name="id" value="" />
+						}
 							<fieldset>
 								<div class="control-group">
-									<label class="control-label">所属机构</label>
+									<label class="control-label">联系人姓名</label>
 									<div class="controls">
-										<input id="" name="" value="" />
+										@if(contact != null){
+											<input type="" name="contactName" value="@contact.contactName" />
+										}else{
+											<input type="" name="contactName" value="" />
+										}
 									</div>
 								</div>
-								
+							<div class="control-group">
+									<label class="control-label">手机号</label>
+									<div class="controls">
+										@if(contact != null){
+											<input id="phone" type="text" onkeyup="this.value = this.value.replace(/\D/g,'');" name="phone" value="@contact.phone" />
+										}else{
+											<input type="text" name="phone"  />
+										}
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label">地址</label>
+									<div class="controls">
+										@if(contact != null){
+										 <textArea name="address">@contact.address</textArea>
+										}else{
+										 <textArea name="address"></textArea>
+										}
+									</div>
+								</div>
 							</fieldset>
 						</form>
 						<div id="error" style="display: none" class="alert alert-error">
@@ -57,15 +86,13 @@
 		 
 		 // 基本资料
 		 $("#ok").click(function() {
+		 	$("#phone").val()
+		 	$.post("/education/admin/saveinformation", $("#infoForm").serialize(),function(data){
+		 		if ("success" == data.responseCode) {
+					alertrs("success","更新成功");
+				}
+		 	} ,"json");
 		 });
-		 
-		 // 保存密码 
-		 $("#save").click(function() {
-
-							  $.post("/crm/web/personalinformation/savepassword?userId="+userId, $("#passwordForm").serialize(), function(data) {
-
-								}, "json");
-			});
 		 
 	</script>
 }

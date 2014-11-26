@@ -42,7 +42,7 @@ create sequence user_seq;
 
 -- 联系人
 create table contact(
-  id                        uuid not null ,-- 主键 
+  id                        varchar(255) not null ,-- 主键 
   created_by                varchar(255) ,-- 创建人
   created_at                timestamp ,-- 创建时间
   updated_by                varchar(255) ,-- 更新人

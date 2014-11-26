@@ -1,5 +1,7 @@
 package models;
 
+import java.util.UUID;
+
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
@@ -10,6 +12,9 @@ public class AccidentLetters extends BaseModel{
     public String message;
     public String detail;
 
-    public static Finder<String, AccidentLetters> finder = new Finder(String.class, AccidentLetters.class);
+    public static Finder<UUID, AccidentLetters> finder = new Finder<UUID,AccidentLetters>(UUID.class, AccidentLetters.class);
 
+    public static AccidentLetters find(UUID id){
+		return finder.ref(id);
+    }
 }

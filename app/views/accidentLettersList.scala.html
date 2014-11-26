@@ -63,11 +63,11 @@
 	    // 编辑
 	    function edit(id){
 	    	 Shadowbox.open({
-			        content:     "/crm/web/cardtype/edit?id="+id,
+			        content:     "/education/admin/accidentLetters/edit?id="+id,
 			        player:     "iframe",
-			        title:      "编辑就诊卡类型信息",
+			        title:      "编辑事故快报信息",
 			        height:     520,
-			        width:      600
+			        width:      800
 			    });	
 	    }
 	    
@@ -95,7 +95,7 @@
 		        player:     "iframe",
 		        title:      "新增事故快报信息",
 		        height:     520,
-		        width:      600
+		        width:      800
 		    });	
 	    }
 	    
@@ -112,7 +112,7 @@
 					heading:'确认信息',
 					body:message,
 					callback: function() {
-						$.post("/crm/web/cardtype/delete?id="+id+"&isDel="+isDel, null,function(data){
+						$.post("/education/admin/accidentLetters/del?id="+id+"&isDel="+isDel, null,function(data){
 							greload();
 							if(isDel == 'true'){
 								alertrs("success","恢复成功");

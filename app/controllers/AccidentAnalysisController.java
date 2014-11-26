@@ -9,6 +9,7 @@ import java.util.UUID;
 
 import models.AccidentAnalysis;
 import models.AccidentAnalysis;
+import models.AccidentLetters;
 import bean.UserSession;
 
 import com.avaje.ebean.Expr;
@@ -139,5 +140,68 @@ public class AccidentAnalysisController extends Controller {
 
         return true;
     }
+    
+    /**
+     * 编辑操作
+     * @return
+     */
+    public static Result edit(){
+		Map<String, String> formmap = form().bindFromRequest().data();
+		String id = ValueHelper.isEmpty(formmap.get("id")) ? null : formmap.get("id").trim();
+		System.out.println(id);
+		AccidentAnalysis accidenAnalysis = null;
+		accidenAnalysis = AccidentAnalysis.find(UUID.fromString(id));
+		return ok(views.html.accidentAnalysisEdit.render(accidenAnalysis));
+	}
+	
+    /**
+     * 编辑的保存操作
+     * @return
+     */
+	public static Result update(){
+		Map<String, String> formmap = form().bindFromRequest().data();
+		String message = ValueHelper.isEmpty(formmap.get("message")) ? null
+				: formmap.get("message").trim();
+		String detail = ValueHelper.isEmpty(formmap.get("detail")) ? null
+				: formmap.get("detail");
+		String id = ValueHelper.isEmpty(formmap.get("id")) ? null
+				: formmap.get("id").trim();
+		
+		ObjectNode objectNode = Json.newObject();
+		response().setContentType("text/json;charset=UTF-8");
+		if (!checkRepeat(UUID.fromString(id), message)) {
+			objectNode.put("responseCode", ResponseCode.REPEATCODE.name());
+			return ok(objectNode.toString());
+		}
+		 
+		AccidentAnalysis accidenAnalysis = null;
+		Timestamp now = DateUtil.getCurrent();
+		
+		accidenAnalysis = AccidentAnalysis.find(UUID.fromString(id));
+		String userId = UserSession.getCurrent(session()).userId;
+		
+		accidenAnalysis.message = message;
+		accidenAnalysis.detail = detail;
+
+		accidenAnalysis.updatedAt = now;
+		accidenAnalysis.updatedBy = userId;
+
+		accidenAnalysis.save();
+
+		return ok(objectNode.toString());
+	}
+	
+	/**
+	 * 删除恢复操作
+	 * @param id
+	 * @param isDel
+	 * @return
+	 */
+	public static Result del(String id,String isDel){
+		AccidentAnalysis accidenAnalysis  = AccidentAnalysis.find(UUID.fromString(id));
+		accidenAnalysis.deleted = !Boolean.valueOf(isDel);
+		accidenAnalysis.update();
+		return ok();
+	}
 
 }

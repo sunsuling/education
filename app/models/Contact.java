@@ -19,7 +19,7 @@ public class Contact extends BaseModel {
 	 
 	public static Finder<UUID, Contact> find = new Finder<UUID,Contact>(UUID.class, Contact.class);
 	
-	public Contact find(UUID id){
+	public static Contact find(UUID id){
 		return find.ref(id);
 	}
 }
