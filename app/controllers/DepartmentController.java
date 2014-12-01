@@ -7,8 +7,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
+import models.Department;
 import models.Law;
-import models.Regulation;
 import bean.UserSession;
 
 import com.avaje.ebean.Expr;
@@ -23,13 +23,13 @@ import play.mvc.Result;
 import utils.DateUtil;
 import utils.ValueHelper;
 /**
- * 行政法规
+ * 部门规章
  * @author Administrator
  *
  */
-public class RegulationController extends Controller {
+public class DepartmentController extends Controller{
 	public static Result list(){
-		return ok(views.html.regulationList.render());
+		return ok(views.html.departmentList.render());
 	}
 	
 	// 结果集
@@ -41,7 +41,7 @@ public class RegulationController extends Controller {
         Map<String, String> formmap = form().bindFromRequest().data();
         String search = formmap.get("sSearch");
         
-        ExpressionList<Regulation> ele = Regulation.find.where();
+        ExpressionList<Department> ele = Department.find.where();
         	
         if (ValueHelper.isNotEmpty(search)) {
             ele.or(Expr.ilike("title", "%" + search + "%"), Expr.ilike("detail", "%" + search + "%"));
@@ -49,7 +49,7 @@ public class RegulationController extends Controller {
 
         ele.orderBy().desc("effectiveAt");
         int total = ele.findRowCount();
-        List<Regulation> ers = ele.setFirstRow(intpage).setMaxRows(maxrows).findList();
+        List<Department> ers = ele.setFirstRow(intpage).setMaxRows(maxrows).findList();
 
         ObjectNode objectNode = Json.newObject();
         objectNode.put("sEcho", sEchoint + 1);
@@ -57,7 +57,7 @@ public class RegulationController extends Controller {
         objectNode.put("iTotalDisplayRecords", String.valueOf(total));
         ArrayNode anode = objectNode.putArray("aaData");
 
-        for (Regulation row : ers) {
+        for (Department row : ers) {
 
             ObjectNode robjectNode = anode.addObject();
 
@@ -78,7 +78,7 @@ public class RegulationController extends Controller {
      * @return
      */
     public static Result add(){
-    	return ok(views.html.regulationAdd.render());
+    	return ok(views.html.departmentAdd.render());
     }
     
     /**
@@ -99,35 +99,35 @@ public class RegulationController extends Controller {
             return ok(objectNode.toString());    		
     	}
     	
-    	Regulation regulation = new Regulation();
+    	Department department = new Department();
     	
     	Timestamp now = DateUtil.getCurrent();
     	String userId = UserSession.getCurrent(session()).userId;
     	
-    	regulation.title = title;
-    	regulation.detail = detail;
-    	regulation.effectiveAt = DateUtil.string2TimestampAuto(effectiveAt);
-    	regulation.createdAt = now;
-    	regulation.createdBy = userId;
-    	regulation.updatedAt = now;
-    	regulation.updatedBy = userId;
+    	department.title = title;
+    	department.detail = detail;
+    	department.effectiveAt = DateUtil.string2TimestampAuto(effectiveAt);
+    	department.createdAt = now;
+    	department.createdBy = userId;
+    	department.updatedAt = now;
+    	department.updatedBy = userId;
     	
-    	regulation.save();
+    	department.save();
     	
     	return ok(objectNode.toString());
     }
     
     /**
      * 编辑
-     * @param id 法律的主键
+     * @param id 部门规章的主键
      * @return
      */
     public static Result edit(String id){
-    	Regulation regulation = Regulation.find(UUID.fromString(id));
+    	Department department = Department.find(UUID.fromString(id));
     	
-    	String effectiveAt = DateUtil.timestamp2String(regulation.effectiveAt);
+    	String effectiveAt = DateUtil.timestamp2String(department.effectiveAt);
     	
-    	return ok(views.html.regulationEdit.render(regulation,effectiveAt));
+    	return ok(views.html.departmentEdit.render(department,effectiveAt));
     }
 
     /**
@@ -149,19 +149,19 @@ public class RegulationController extends Controller {
             return ok(objectNode.toString());    		
     	}
     	
-    	Regulation regulation = Regulation.find(UUID.fromString(id));
+    	Department department = Department.find(UUID.fromString(id));
     	
     	Timestamp now = DateUtil.getCurrent();
     	String userId = UserSession.getCurrent(session()).userId;
     	
-    	regulation.title = title;
-    	regulation.detail = detail;
-    	regulation.effectiveAt = DateUtil.string2TimestampAuto(effectiveAt);
+    	department.title = title;
+    	department.detail = detail;
+    	department.effectiveAt = DateUtil.string2TimestampAuto(effectiveAt);
     	
-    	regulation.updatedAt = now;
-    	regulation.updatedBy = userId;
+    	department.updatedAt = now;
+    	department.updatedBy = userId;
     	
-    	regulation.save();
+    	department.save();
     	
     	return ok(objectNode.toString());
     	
@@ -174,9 +174,9 @@ public class RegulationController extends Controller {
 	 * @return
 	 */
 	public static Result del(String id,String isDel){
-		Regulation regulation  = Regulation.find(UUID.fromString(id));
-		regulation.deleted = !Boolean.valueOf(isDel);
-		regulation.update();
+		Department department  = Department.find(UUID.fromString(id));
+		department.deleted = !Boolean.valueOf(isDel);
+		department.update();
 		return ok();
 	}
 

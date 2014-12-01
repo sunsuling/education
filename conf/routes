@@ -18,7 +18,7 @@ GET         /assets/*file                controllers.Assets.at(path="/public", f
 POST        /assets/*file                controllers.Assets.at(path="/public", file)
 
 # 登陆
-POST  /education/admin/dologin  controllers.ApplicationController.doLogin
+POST  /education/admin/dologin  			   controllers.ApplicationController.doLogin
 
 # 联系我们
 GET   /education/admin/contact                 controllers.ContactController.contact
@@ -60,3 +60,20 @@ POST  /education/admin/regulation/save         		controllers.RegulationControlle
 GET   /education/admin/regulation/edit				controllers.RegulationController.edit(id)
 POST  /education/admin/regulation/update			controllers.RegulationController.update()
 POST  /education/admin/regulation/del	   	   		controllers.RegulationController.del(id,isDel)
+
+#部门规章
+GET   /education/admin/department              		controllers.DepartmentController.list()
+GET   /education/admin/department/listrs       		controllers.DepartmentController.listRs(sEcho,iDisplayStart,iDisplayLength)
+GET   /education/admin/department/add		    	controllers.DepartmentController.add()
+POST  /education/admin/department/save         		controllers.DepartmentController.save()
+GET   /education/admin/department/edit				controllers.DepartmentController.edit(id)
+POST  /education/admin/department/update			controllers.DepartmentController.update()
+POST  /education/admin/department/del	   	   		controllers.DepartmentController.del(id,isDel)
+#地方法规
+GET   /education/admin/locality              		controllers.LocalityController.list()
+GET   /education/admin/locality/listrs       		controllers.LocalityController.listRs(sEcho,iDisplayStart,iDisplayLength)
+GET   /education/admin/locality/add		    		controllers.LocalityController.add()
+POST  /education/admin/locality/save         		controllers.LocalityController.save()
+GET   /education/admin/locality/edit				controllers.LocalityController.edit(id)
+POST  /education/admin/locality/update				controllers.LocalityController.update()
+POST  /education/admin/locality/del	   	   			controllers.LocalityController.del(id,isDel)

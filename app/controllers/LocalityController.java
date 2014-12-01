@@ -7,8 +7,14 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
+import models.Department;
 import models.Law;
-import models.Regulation;
+import models.Locality;
+import play.libs.Json;
+import play.mvc.Controller;
+import play.mvc.Result;
+import utils.DateUtil;
+import utils.ValueHelper;
 import bean.UserSession;
 
 import com.avaje.ebean.Expr;
@@ -17,19 +23,10 @@ import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
 import controllers.enums.ResponseCode;
-import play.libs.Json;
-import play.mvc.Controller;
-import play.mvc.Result;
-import utils.DateUtil;
-import utils.ValueHelper;
-/**
- * 行政法规
- * @author Administrator
- *
- */
-public class RegulationController extends Controller {
+
+public class LocalityController extends Controller{
 	public static Result list(){
-		return ok(views.html.regulationList.render());
+		return ok(views.html.localityList.render());
 	}
 	
 	// 结果集
@@ -41,7 +38,7 @@ public class RegulationController extends Controller {
         Map<String, String> formmap = form().bindFromRequest().data();
         String search = formmap.get("sSearch");
         
-        ExpressionList<Regulation> ele = Regulation.find.where();
+        ExpressionList<Locality> ele = Locality.find.where();
         	
         if (ValueHelper.isNotEmpty(search)) {
             ele.or(Expr.ilike("title", "%" + search + "%"), Expr.ilike("detail", "%" + search + "%"));
@@ -49,7 +46,7 @@ public class RegulationController extends Controller {
 
         ele.orderBy().desc("effectiveAt");
         int total = ele.findRowCount();
-        List<Regulation> ers = ele.setFirstRow(intpage).setMaxRows(maxrows).findList();
+        List<Locality> ers = ele.setFirstRow(intpage).setMaxRows(maxrows).findList();
 
         ObjectNode objectNode = Json.newObject();
         objectNode.put("sEcho", sEchoint + 1);
@@ -57,7 +54,7 @@ public class RegulationController extends Controller {
         objectNode.put("iTotalDisplayRecords", String.valueOf(total));
         ArrayNode anode = objectNode.putArray("aaData");
 
-        for (Regulation row : ers) {
+        for (Locality row : ers) {
 
             ObjectNode robjectNode = anode.addObject();
 
@@ -78,7 +75,7 @@ public class RegulationController extends Controller {
      * @return
      */
     public static Result add(){
-    	return ok(views.html.regulationAdd.render());
+    	return ok(views.html.localityAdd.render());
     }
     
     /**
@@ -99,35 +96,35 @@ public class RegulationController extends Controller {
             return ok(objectNode.toString());    		
     	}
     	
-    	Regulation regulation = new Regulation();
+    	Locality locality = new Locality();
     	
     	Timestamp now = DateUtil.getCurrent();
     	String userId = UserSession.getCurrent(session()).userId;
     	
-    	regulation.title = title;
-    	regulation.detail = detail;
-    	regulation.effectiveAt = DateUtil.string2TimestampAuto(effectiveAt);
-    	regulation.createdAt = now;
-    	regulation.createdBy = userId;
-    	regulation.updatedAt = now;
-    	regulation.updatedBy = userId;
+    	locality.title = title;
+    	locality.detail = detail;
+    	locality.effectiveAt = DateUtil.string2TimestampAuto(effectiveAt);
+    	locality.createdAt = now;
+    	locality.createdBy = userId;
+    	locality.updatedAt = now;
+    	locality.updatedBy = userId;
     	
-    	regulation.save();
+    	locality.save();
     	
     	return ok(objectNode.toString());
     }
     
     /**
      * 编辑
-     * @param id 法律的主键
+     * @param id 部门规章的主键
      * @return
      */
     public static Result edit(String id){
-    	Regulation regulation = Regulation.find(UUID.fromString(id));
+    	Locality locality = Locality.find(UUID.fromString(id));
     	
-    	String effectiveAt = DateUtil.timestamp2String(regulation.effectiveAt);
+    	String effectiveAt = DateUtil.timestamp2String(locality.effectiveAt);
     	
-    	return ok(views.html.regulationEdit.render(regulation,effectiveAt));
+    	return ok(views.html.localityEdit.render(locality,effectiveAt));
     }
 
     /**
@@ -149,19 +146,19 @@ public class RegulationController extends Controller {
             return ok(objectNode.toString());    		
     	}
     	
-    	Regulation regulation = Regulation.find(UUID.fromString(id));
+    	Locality locality = Locality.find(UUID.fromString(id));
     	
     	Timestamp now = DateUtil.getCurrent();
     	String userId = UserSession.getCurrent(session()).userId;
     	
-    	regulation.title = title;
-    	regulation.detail = detail;
-    	regulation.effectiveAt = DateUtil.string2TimestampAuto(effectiveAt);
+    	locality.title = title;
+    	locality.detail = detail;
+    	locality.effectiveAt = DateUtil.string2TimestampAuto(effectiveAt);
     	
-    	regulation.updatedAt = now;
-    	regulation.updatedBy = userId;
+    	locality.updatedAt = now;
+    	locality.updatedBy = userId;
     	
-    	regulation.save();
+    	locality.save();
     	
     	return ok(objectNode.toString());
     	
@@ -174,9 +171,9 @@ public class RegulationController extends Controller {
 	 * @return
 	 */
 	public static Result del(String id,String isDel){
-		Regulation regulation  = Regulation.find(UUID.fromString(id));
-		regulation.deleted = !Boolean.valueOf(isDel);
-		regulation.update();
+		Locality locality  = Locality.find(UUID.fromString(id));
+		locality.deleted = !Boolean.valueOf(isDel);
+		locality.update();
 		return ok();
 	}
 

@@ -84,3 +84,33 @@ create table regulation (
   constraint PK_REGULATION primary key (id))
 ;
 create sequence regulation_seq;
+
+-- 部门规章
+create table department (
+  id                        varchar(255) not null,
+  created_by                varchar(255),
+  created_at                timestamp,
+  updated_by                varchar(255),
+  updated_at                timestamp,
+  deleted                   boolean,
+  title                     varchar(255),
+  detail                    text,
+  effective_at			    timestamp ,-- 部门规章生效时间
+  constraint PK_DEPARTMENT primary key (id))
+;
+create sequence department_seq;
+
+-- 地方法规
+create table locality (
+  id                        varchar(255) not null,
+  created_by                varchar(255),
+  created_at                timestamp,
+  updated_by                varchar(255),
+  updated_at                timestamp,
+  deleted                   boolean,
+  title                     varchar(255),
+  detail                    text,
+  effective_at			    timestamp ,-- 地方法规生效时间
+  constraint PK_LOCALITY primary key (id))
+;
+create sequence locality_seq;
