@@ -3,77 +3,79 @@
 # ~~~~
 
 # Home page
-GET         /                            controllers.ApplicationController.index
+GET         /                                               controllers.ApplicationController.index
 
 
 #accident
-POST        /accident/letters            controllers.AccidentController.searchAccidentLetters
-POST        /accident/analysis           controllers.AccidentController.searchAccidentAnalysis
+POST        /accident/letters                               controllers.AccidentController.searchAccidentLetters
+POST        /accident/analysis                              controllers.AccidentController.searchAccidentAnalysis
 
 
 
 
 # Map static resources from the /public folder to the /assets URL path
-GET         /assets/*file                controllers.Assets.at(path="/public", file)
-POST        /assets/*file                controllers.Assets.at(path="/public", file)
+GET         /assets/*file                                   controllers.Assets.at(path="/public", file)
+POST        /assets/*file                                   controllers.Assets.at(path="/public", file)
 
 # 登陆
-POST  /education/admin/dologin  			   controllers.ApplicationController.doLogin
+GET         /education/admin/doregister                     controllers.ApplicationController.doRegister
+POST        /education/admin/register                       controllers.ApplicationController.register
+POST        /education/admin/dologin  			            controllers.ApplicationController.doLogin
 
 # 联系我们
-GET   /education/admin/contact                 controllers.ContactController.contact
-POST /education/admin/saveinformation          controllers.ContactController.saveInformation
+GET         /education/admin/contact                        controllers.ContactController.contact
+POST        /education/admin/saveinformation                controllers.ContactController.saveInformation
 
 # 事故快报
-GET   /education/admin/accidentLetters             controllers.AccidentLettersController.list()
-GET   /education/admin/accidentLetters/listrs      controllers.AccidentLettersController.listRs(sEcho,iDisplayStart,iDisplayLength)
-GET   /education/admin/accidentLetters/add		   controllers.AccidentLettersController.add()
-POST  /education/admin/accidentLetters/save        controllers.AccidentLettersController.save()
-GET  /education/admin/accidentLetters/edit	   	   controllers.AccidentLettersController.edit()
-POST  /education/admin/accidentLetters/update	   controllers.AccidentLettersController.update()
-POST  /education/admin/accidentLetters/del	   	   controllers.AccidentLettersController.del(id,isDel)
+GET         /education/admin/accidentLetters                controllers.AccidentLettersController.list()
+GET         /education/admin/accidentLetters/listrs         controllers.AccidentLettersController.listRs(sEcho,iDisplayStart,iDisplayLength)
+GET         /education/admin/accidentLetters/add		    controllers.AccidentLettersController.add()
+POST        /education/admin/accidentLetters/save           controllers.AccidentLettersController.save()
+GET         /education/admin/accidentLetters/edit	   	    controllers.AccidentLettersController.edit()
+POST        /education/admin/accidentLetters/update	        controllers.AccidentLettersController.update()
+POST        /education/admin/accidentLetters/del	   	    controllers.AccidentLettersController.del(id,isDel)
 
 # 事故案例分析
-GET  /education/admin/accidentAnalysis             	controllers.AccidentAnalysisController.list()
-GET  /education/admin/accidentAnalysis/listrs       controllers.AccidentAnalysisController.listRs(sEcho,iDisplayStart,iDisplayLength)
-GET   /education/admin/accidentAnalysis/add		   	controllers.AccidentAnalysisController.add()
-POST  /education/admin/accidentAnalysis/save        controllers.AccidentAnalysisController.save()
-GET  /education/admin/accidentAnalysis/edit	   	   controllers.AccidentAnalysisController.edit()
-POST  /education/admin/accidentAnalysis/update	   controllers.AccidentAnalysisController.update()
-POST  /education/admin/accidentAnalysis/del	   	   controllers.AccidentAnalysisController.del(id,isDel)
+GET         /education/admin/accidentAnalysis             	controllers.AccidentAnalysisController.list()
+GET         /education/admin/accidentAnalysis/listrs        controllers.AccidentAnalysisController.listRs(sEcho,iDisplayStart,iDisplayLength)
+GET         /education/admin/accidentAnalysis/add		   	controllers.AccidentAnalysisController.add()
+POST        /education/admin/accidentAnalysis/save          controllers.AccidentAnalysisController.save()
+GET         /education/admin/accidentAnalysis/edit	   	    controllers.AccidentAnalysisController.edit()
+POST        /education/admin/accidentAnalysis/update	    controllers.AccidentAnalysisController.update()
+POST        /education/admin/accidentAnalysis/del	   	    controllers.AccidentAnalysisController.del(id,isDel)
 
 
 # 法律
-GET   /education/admin/law              			controllers.LawController.list()
-GET   /education/admin/law/listrs       			controllers.LawController.listRs(sEcho,iDisplayStart,iDisplayLength)
-GET   /education/admin/law/add		    			controllers.LawController.add()
-POST  /education/admin/law/save         			controllers.LawController.save()
-GET   /education/admin/law/edit						controllers.LawController.edit(id)
-POST  /education/admin/law/update					controllers.LawController.update()
-POST  /education/admin/law/del	   	   				controllers.LawController.del(id,isDel)
+GET         /education/admin/law              			    controllers.LawController.list()
+GET         /education/admin/law/listrs       			    controllers.LawController.listRs(sEcho,iDisplayStart,iDisplayLength)
+GET         /education/admin/law/add		    			controllers.LawController.add()
+POST        /education/admin/law/save         			    controllers.LawController.save()
+GET         /education/admin/law/edit						controllers.LawController.edit(id)
+POST        /education/admin/law/update					    controllers.LawController.update()
+POST        /education/admin/law/del	   	   				controllers.LawController.del(id,isDel)
 
 # 行政法规
-GET   /education/admin/regulation              		controllers.RegulationController.list()
-GET   /education/admin/regulation/listrs       		controllers.RegulationController.listRs(sEcho,iDisplayStart,iDisplayLength)
-GET   /education/admin/regulation/add		    	controllers.RegulationController.add()
-POST  /education/admin/regulation/save         		controllers.RegulationController.save()
-GET   /education/admin/regulation/edit				controllers.RegulationController.edit(id)
-POST  /education/admin/regulation/update			controllers.RegulationController.update()
-POST  /education/admin/regulation/del	   	   		controllers.RegulationController.del(id,isDel)
+GET         /education/admin/regulation              		controllers.RegulationController.list()
+GET         /education/admin/regulation/listrs       		controllers.RegulationController.listRs(sEcho,iDisplayStart,iDisplayLength)
+GET         /education/admin/regulation/add		    	    controllers.RegulationController.add()
+POST        /education/admin/regulation/save         		controllers.RegulationController.save()
+GET         /education/admin/regulation/edit				controllers.RegulationController.edit(id)
+POST        /education/admin/regulation/update			    controllers.RegulationController.update()
+POST        /education/admin/regulation/del	   	   		    controllers.RegulationController.del(id,isDel)
 
 #部门规章
-GET   /education/admin/department              		controllers.DepartmentController.list()
-GET   /education/admin/department/listrs       		controllers.DepartmentController.listRs(sEcho,iDisplayStart,iDisplayLength)
-GET   /education/admin/department/add		    	controllers.DepartmentController.add()
-POST  /education/admin/department/save         		controllers.DepartmentController.save()
-GET   /education/admin/department/edit				controllers.DepartmentController.edit(id)
-POST  /education/admin/department/update			controllers.DepartmentController.update()
-POST  /education/admin/department/del	   	   		controllers.DepartmentController.del(id,isDel)
+GET         /education/admin/department              		controllers.DepartmentController.list()
+GET         /education/admin/department/listrs       		controllers.DepartmentController.listRs(sEcho,iDisplayStart,iDisplayLength)
+GET         /education/admin/department/add		    	    controllers.DepartmentController.add()
+POST        /education/admin/department/save         		controllers.DepartmentController.save()
+GET         /education/admin/department/edit				controllers.DepartmentController.edit(id)
+POST        /education/admin/department/update			    controllers.DepartmentController.update()
+POST        /education/admin/department/del	   	   		    controllers.DepartmentController.del(id,isDel)
 #地方法规
-GET   /education/admin/locality              		controllers.LocalityController.list()
-GET   /education/admin/locality/listrs       		controllers.LocalityController.listRs(sEcho,iDisplayStart,iDisplayLength)
-GET   /education/admin/locality/add		    		controllers.LocalityController.add()
-POST  /education/admin/locality/save         		controllers.LocalityController.save()
-GET   /education/admin/locality/edit				controllers.LocalityController.edit(id)
-POST  /education/admin/locality/update				controllers.LocalityController.update()
-POST  /education/admin/locality/del	   	   			controllers.LocalityController.del(id,isDel)
+GET         /education/admin/locality              		    controllers.LocalityController.list()
+GET         /education/admin/locality/listrs       		    controllers.LocalityController.listRs(sEcho,iDisplayStart,iDisplayLength)
+GET         /education/admin/locality/add		    		controllers.LocalityController.add()
+POST        /education/admin/locality/save         		    controllers.LocalityController.save()
+GET         /education/admin/locality/edit				    controllers.LocalityController.edit(id)
+POST        /education/admin/locality/update				controllers.LocalityController.update()
+POST        /education/admin/locality/del	   	   			controllers.LocalityController.del(id,isDel)
