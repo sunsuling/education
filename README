@@ -79,4 +79,8 @@ public
  --activator compile
 
  -- www.jsaxw.com 
- -- 
+ -- angular-ui http://angular-ui.github.io/bootstrap/ 
+ -- font-awesome 未bootstrap订制的图标  
+           http://www.bootcss.com/p/font-awesome/#
+           http://fontawesome.io/icons/
+            
