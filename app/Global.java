@@ -1,4 +1,8 @@
-import bean.UserSession;
+import static play.mvc.Results.redirect;
+
+import java.lang.reflect.Method;
+import java.text.MessageFormat;
+
 import play.Application;
 import play.GlobalSettings;
 import play.Logger;
@@ -6,11 +10,7 @@ import play.libs.F;
 import play.mvc.Action;
 import play.mvc.Http;
 import play.mvc.Result;
-
-import java.lang.reflect.Method;
-import java.text.MessageFormat;
-
-import static play.mvc.Results.redirect;
+import bean.UserSession;
 
 public class Global extends GlobalSettings {
 

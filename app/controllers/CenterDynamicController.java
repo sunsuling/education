@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
-import models.Law;
+import models.CenterDynamic;
 import play.libs.Json;
 import play.mvc.Controller;
 import play.mvc.Result;
@@ -21,14 +21,10 @@ import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
 import controllers.enums.ResponseCode;
-/**
- * 法律
- * @author Administrator
- *
- */
-public class LawController extends Controller {
+
+public class CenterDynamicController extends Controller{
 	public static Result list(){
-		return ok(views.html.lawList.render());
+		return ok(views.html.centerDynamicList.render());
 	}
 	
 	// 结果集
@@ -40,7 +36,7 @@ public class LawController extends Controller {
         Map<String, String> formmap = form().bindFromRequest().data();
         String search = formmap.get("sSearch");
         
-        ExpressionList<Law> ele = Law.find.where();
+        ExpressionList<CenterDynamic> ele = CenterDynamic.find.where();
 
         	
         if (ValueHelper.isNotEmpty(search)) {
@@ -49,7 +45,7 @@ public class LawController extends Controller {
 
         ele.orderBy().desc("effectiveAt");
         int total = ele.findRowCount();
-        List<Law> ers = ele.setFirstRow(intpage).setMaxRows(maxrows).findList();
+        List<CenterDynamic> ers = ele.setFirstRow(intpage).setMaxRows(maxrows).findList();
 
         ObjectNode objectNode = Json.newObject();
         objectNode.put("sEcho", sEchoint + 1);
@@ -57,13 +53,13 @@ public class LawController extends Controller {
         objectNode.put("iTotalDisplayRecords", String.valueOf(total));
         ArrayNode anode = objectNode.putArray("aaData");
 
-        for (Law row : ers) {
+        for (CenterDynamic row : ers) {
 
             ObjectNode robjectNode = anode.addObject();
-
             robjectNode.put("id", row.id.toString());
             robjectNode.put("title", row.title);
             robjectNode.put("detail", row.detail);            
+            robjectNode.put("source", row.source);
             robjectNode.put("deleted", row.deleted);
             robjectNode.put("updatedAt", DateUtil.timestamp2String3(row.updatedAt));
             robjectNode.put("createdAt", DateUtil.timestamp2String3(row.createdAt));
@@ -78,7 +74,7 @@ public class LawController extends Controller {
      * @return
      */
     public static Result add(){
-    	return ok(views.html.lawAdd.render());
+    	return ok(views.html.centerDynamicAdd.render());
     }
     
     /**
@@ -89,6 +85,7 @@ public class LawController extends Controller {
     	Map<String, String> formmap = form().bindFromRequest().data();
     	String title = ValueHelper.isEmpty(formmap.get("title")) ? null : formmap.get("title").trim();
     	String detail = ValueHelper.isEmpty(formmap.get("detail")) ? null : formmap.get("detail");
+    	String source = ValueHelper.isEmpty(formmap.get("source")) ? null : formmap.get("source");
     	String effectiveAt = ValueHelper.isEmpty(formmap.get("effectiveAt")) ? null : formmap.get("effectiveAt");
     	
     	ObjectNode objectNode = Json.newObject();
@@ -99,35 +96,36 @@ public class LawController extends Controller {
             return ok(objectNode.toString());    		
     	}
     	
-    	Law law = new Law();
+    	CenterDynamic centerDynamic = new CenterDynamic();
     	
     	Timestamp now = DateUtil.getCurrent();
     	String userId = UserSession.getCurrent(session()).userId;
     	
-    	law.title = title;
-    	law.detail = detail;
-    	law.effectiveAt = DateUtil.string2TimestampAuto(effectiveAt);
-    	law.createdAt = now;
-    	law.createdBy = userId;
-    	law.updatedAt = now;
-    	law.updatedBy = userId;
+    	centerDynamic.title = title;
+    	centerDynamic.detail = detail;
+    	centerDynamic.source = source;
+    	centerDynamic.effectiveAt = DateUtil.string2TimestampAuto(effectiveAt);
+    	centerDynamic.createdAt = now;
+    	centerDynamic.createdBy = userId;
+    	centerDynamic.updatedAt = now;
+    	centerDynamic.updatedBy = userId;
     	
-    	law.save();
+    	centerDynamic.save();
     	
     	return ok(objectNode.toString());
     }
     
     /**
      * 编辑
-     * @param id 法律的主键
+     * @param id主键
      * @return
      */
     public static Result edit(String id){
-    	Law law = Law.find(UUID.fromString(id));
+    	CenterDynamic centerDynamic = CenterDynamic.find(UUID.fromString(id));
     	
-    	String effectiveAt = DateUtil.timestamp2String(law.effectiveAt);
+    	String effectiveAt = DateUtil.timestamp2String(centerDynamic.effectiveAt);
     	
-    	return ok(views.html.lawEdit.render(law,effectiveAt));
+    	return ok(views.html.centerDynamicEdit.render(centerDynamic, effectiveAt));
     }
 
     /**
@@ -138,6 +136,7 @@ public class LawController extends Controller {
     	Map<String, String> formmap = form().bindFromRequest().data();
     	String title = ValueHelper.isEmpty(formmap.get("title")) ? null : formmap.get("title").trim();
     	String detail = ValueHelper.isEmpty(formmap.get("detail")) ? null : formmap.get("detail");
+    	String source = ValueHelper.isEmpty(formmap.get("source")) ? null : formmap.get("source");
     	String effectiveAt = ValueHelper.isEmpty(formmap.get("effectiveAt")) ? null : formmap.get("effectiveAt");
     	String id = ValueHelper.isEmpty(formmap.get("id")) ? null : formmap.get("id").trim();
     	
@@ -149,19 +148,20 @@ public class LawController extends Controller {
             return ok(objectNode.toString());    		
     	}
     	
-    	Law law = Law.find(UUID.fromString(id));
+    	CenterDynamic centerDynamic = CenterDynamic.find(UUID.fromString(id));
     	
     	Timestamp now = DateUtil.getCurrent();
     	String userId = UserSession.getCurrent(session()).userId;
     	
-    	law.title = title;
-    	law.detail = detail;
-    	law.effectiveAt = DateUtil.string2TimestampAuto(effectiveAt);
+    	centerDynamic.title = title;
+    	centerDynamic.detail = detail;
+    	centerDynamic.source = source;
+    	centerDynamic.effectiveAt = DateUtil.string2TimestampAuto(effectiveAt);
     	
-    	law.updatedAt = now;
-    	law.updatedBy = userId;
+    	centerDynamic.updatedAt = now;
+    	centerDynamic.updatedBy = userId;
     	
-    	law.save();
+    	centerDynamic.save();
     	
     	return ok(objectNode.toString());
     	
@@ -174,9 +174,9 @@ public class LawController extends Controller {
 	 * @return
 	 */
 	public static Result del(String id,String isDel){
-		Law law  = Law.find(UUID.fromString(id));
-		law.deleted = !Boolean.valueOf(isDel);
-		law.update();
+		CenterDynamic centerDynamic  = CenterDynamic.find(UUID.fromString(id));
+		centerDynamic.deleted = !Boolean.valueOf(isDel);
+		centerDynamic.update();
 		return ok();
 	}
 
@@ -189,7 +189,7 @@ public class LawController extends Controller {
      */
     private static boolean checkRepeat(UUID id, String title) {
         int count = 1;
-        ExpressionList<Law> ele = Law.find.where();
+        ExpressionList<CenterDynamic> ele = CenterDynamic.find.where();
             ele.eq("title", title);
         
         if (ValueHelper.isNotEmpty(id)) {

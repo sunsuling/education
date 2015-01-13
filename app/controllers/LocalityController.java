@@ -7,7 +7,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
-import models.Department;
 import models.Law;
 import models.Locality;
 import play.libs.Json;

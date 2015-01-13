@@ -1,0 +1,188 @@
+@(summary:Summary)
+@crmMain{
+<body>
+	<div>
+		<ul class="breadcrumb">
+			<li>
+				<a href="/education/admin/home">首页</a> <span class="divider">/</span>
+			</li>
+			<li>
+				<a href="#">中心简介管理</a>
+			</li>
+		</ul>
+	</div>
+	<div class="row-fluid sortable">
+		<div class="span12">
+			<div class="box-content">
+						<form class="form-horizontal" id="infoForm">
+						@if(summary != null){
+							<input type="hidden" name="id" value="@summary.id" />
+						}else{
+							<input type="hidden" name="id" value="" />
+						}
+							<fieldset>
+								<div class="control-group">
+									<label class="control-label">标题1</label>
+									<div class="controls">
+										@if(summary != null){
+											<input type="" name="title1" value="@summary.title1" />
+										}else{
+											<input type="" name="title1" value="" />
+										}
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label">内容1</label>
+									<div class="controls">
+										@if(summary != null){
+										 <textArea name="content1">@summary.content1</textArea>
+										}else{
+										 <textArea name="content1"></textArea>
+										}
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label">标题2</label>
+									<div class="controls">
+										@if(summary != null){
+											<input type="" name="title2" value="@summary.title2" />
+										}else{
+											<input type="" name="title2" value="" />
+										}
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label">内容2</label>
+									<div class="controls">
+										@if(summary != null){
+										 <textArea name="content2">@summary.content2</textArea>
+										}else{
+										 <textArea name="content2"></textArea>
+										}
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label">标题3</label>
+									<div class="controls">
+										@if(summary != null){
+											<input type="" name="title3" value="@summary.title3" />
+										}else{
+											<input type="" name="title3" value="" />
+										}
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label">内容3</label>
+									<div class="controls">
+										@if(summary != null){
+										 <textArea name="content2">@summary.content2</textArea>
+										}else{
+										 <textArea name="content2"></textArea>
+										}
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label">中心地址</label>
+									<div class="controls">
+									@if(summary != null){
+											<input type="" name="address" value="@summary.address" />
+										}else{
+											<input type="" name="address" value="" />
+										}
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label">联系人</label>
+									<div class="controls">
+										@if(summary != null){
+											<input type="" name="name" value="@summary.name" />
+										}else{
+											<input type="" name="name" value="" />
+										}
+									</div>
+								</div>
+							<div class="control-group">
+									<label class="control-label">咨询电话</label>
+									<div class="controls">
+										@if(summary != null){
+											<input id="phone" type="text" onkeyup="this.value = this.value.replace(/\D/g,'');" name="phone" value="@summary.phone" />
+										}else{
+											<input type="text" name="phone"  />
+										}
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label">qq</label>
+									<div class="controls">
+										@if(summary != null){
+											<input id="qq" type="text" onkeyup="this.value = this.value.replace(/\D/g,'');" name="qq" value="@summary.qq" />
+										}else{
+											<input type="text" name="qq"  />
+										}
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label">email</label>
+									<div class="controls">
+										@if(summary != null){
+											<input id="email" type="text" name="email" value="@summary.email" />
+										}else{
+											<input type="text" name="email"  />
+										}
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label">fax</label>
+									<div class="controls">
+										@if(summary != null){
+											<input id="fax" type="text" name="fax" value="@summary.fax" />
+										}else{
+											<input type="text" name="fax"  />
+										}
+									</div>
+								</div>
+							</fieldset>
+						</form>
+						<div id="error" style="display: none" class="alert alert-error">
+						</div>
+						<div class="form-actions">
+							<button type="button" id="ok" class="btn btn-primary">保存</button>
+						</div>
+			</div>
+		</div>
+					
+	</div>
+	
+	 
+
+	<script type="text/javascript">
+		function alerterror(msg) {
+			$("#error").show();
+			$("#error").text(msg);
+		};
+		
+		
+		
+		 function alertrs(status,msg){
+			 noty({
+			  		text: msg,
+			  		type: status,
+			        dismissQueue: true,
+			  		layout: 'center',
+			  		timeout:500,
+			  		theme: 'defaultTheme'
+			});
+		}
+		 
+		 // 基本资料
+		 $("#ok").click(function() {
+		 	$("#phone").val()
+		 	$.post("/education/admin/summary/saveinformation", $("#infoForm").serialize(),function(data){
+		 		if ("success" == data.responseCode) {
+					alertrs("success","更新成功");
+				}
+		 	} ,"json");
+		 });
+		 
+	</script>
+}

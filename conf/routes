@@ -79,3 +79,25 @@ POST        /education/admin/locality/save         		    controllers.LocalityCon
 GET         /education/admin/locality/edit				    controllers.LocalityController.edit(id)
 POST        /education/admin/locality/update				controllers.LocalityController.update()
 POST        /education/admin/locality/del	   	   			controllers.LocalityController.del(id,isDel)
+
+#summary
+GET         /education/admin/summary                        controllers.SummaryController.summary()
+POST        /education/admin/summary/saveinformation        controllers.SummaryController.saveInformation
+
+#centerDynamic
+GET         /education/admin/centerDynamic              	controllers.CenterDynamicController.list()
+GET         /education/admin/centerDynamic/listrs       	controllers.CenterDynamicController.listRs(sEcho,iDisplayStart,iDisplayLength)
+GET         /education/admin/centerDynamic/add		    	controllers.CenterDynamicController.add()
+POST        /education/admin/centerDynamic/save         	controllers.CenterDynamicController.save()
+GET         /education/admin/centerDynamic/edit				controllers.CenterDynamicController.edit(id)
+POST        /education/admin/centerDynamic/update			controllers.CenterDynamicController.update()
+POST        /education/admin/centerDynamic/del	   	   		controllers.CenterDynamicController.del(id,isDel)
+
+#training
+GET         /education/admin/training              		    controllers.TrainingController.list()
+GET         /education/admin/training/listrs       		    controllers.TrainingController.listRs(sEcho,iDisplayStart,iDisplayLength)
+GET         /education/admin/training/add		    		controllers.TrainingController.add()
+POST        /education/admin/training/save         		    controllers.TrainingController.save()
+GET         /education/admin/training/edit				    controllers.TrainingController.edit(id)
+POST        /education/admin/training/update				controllers.TrainingController.update()
+POST        /education/admin/training/del	   	   			controllers.TrainingController.del(id,isDel)

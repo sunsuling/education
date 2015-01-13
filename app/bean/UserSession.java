@@ -1,13 +1,13 @@
 package bean;
 
+import static play.mvc.Controller.session;
+
+import java.util.UUID;
+
 import models.AccountUser;
 import play.Play;
 import play.cache.Cache;
 import play.mvc.Http.Session;
-
-import java.util.UUID;
-
-import static play.mvc.Controller.session;
 
 
 public class UserSession {

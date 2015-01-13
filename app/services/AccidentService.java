@@ -1,5 +1,8 @@
 package services;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import models.AccidentAnalysis;
 import models.AccidentLetters;
 import utils.CommonUtil;
@@ -7,9 +10,6 @@ import utils.ConverterUtil;
 import vo.AccidentAnalysisVo;
 import vo.AccidentLettersVo;
 import vo.PageVo;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * <p>Project: train</p>

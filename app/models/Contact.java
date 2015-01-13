@@ -3,7 +3,6 @@ package models;
 import java.util.UUID;
 
 import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 /**
  * 联系我们

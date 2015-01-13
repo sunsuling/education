@@ -1,9 +1,9 @@
 package vo;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-
 import java.io.Serializable;
 import java.sql.Timestamp;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 /**
  * <p>Project: train</p>

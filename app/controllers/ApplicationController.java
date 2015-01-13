@@ -1,18 +1,18 @@
 package controllers;
 
-import bean.UserSession;
+import static play.data.Form.form;
+
+import java.net.InetAddress;
+import java.net.UnknownHostException;
+import java.util.Map;
+
 import models.AccountUser;
 import play.mvc.Controller;
 import play.mvc.Result;
 import utils.DateUtil;
 import utils.MD5Helper;
 import utils.ValueHelper;
-
-import java.net.InetAddress;
-import java.net.UnknownHostException;
-import java.util.Map;
-
-import static play.data.Form.form;
+import bean.UserSession;
 
 public class ApplicationController extends Controller {
     public static Result index(){

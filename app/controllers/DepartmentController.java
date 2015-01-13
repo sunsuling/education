@@ -9,6 +9,11 @@ import java.util.UUID;
 
 import models.Department;
 import models.Law;
+import play.libs.Json;
+import play.mvc.Controller;
+import play.mvc.Result;
+import utils.DateUtil;
+import utils.ValueHelper;
 import bean.UserSession;
 
 import com.avaje.ebean.Expr;
@@ -17,11 +22,6 @@ import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
 import controllers.enums.ResponseCode;
-import play.libs.Json;
-import play.mvc.Controller;
-import play.mvc.Result;
-import utils.DateUtil;
-import utils.ValueHelper;
 /**
  * 部门规章
  * @author Administrator

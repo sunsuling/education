@@ -1,11 +1,19 @@
 package controllers;
 
 
+import static play.data.Form.form;
+
 import java.sql.Timestamp;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
+import models.AccidentLetters;
+import play.libs.Json;
+import play.mvc.Controller;
+import play.mvc.Result;
+import utils.DateUtil;
+import utils.ValueHelper;
 import bean.UserSession;
 
 import com.avaje.ebean.Expr;
@@ -14,15 +22,6 @@ import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
 import controllers.enums.ResponseCode;
-
-import models.AccidentLetters;
-
-import play.libs.Json;
-import play.mvc.Controller;
-import play.mvc.Result;
-import static play.data.Form.form;
-import utils.DateUtil;
-import utils.ValueHelper;
 
 /**
  * 事故快报

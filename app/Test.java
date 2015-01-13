@@ -1,7 +1,5 @@
 import java.util.UUID;
 
-import utils.MD5Helper;
-
 
 public class Test {
 	public static void main(String[] args) {

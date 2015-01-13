@@ -8,8 +8,11 @@ import java.util.Map;
 import java.util.UUID;
 
 import models.AccidentAnalysis;
-import models.AccidentAnalysis;
-import models.AccidentLetters;
+import play.libs.Json;
+import play.mvc.Controller;
+import play.mvc.Result;
+import utils.DateUtil;
+import utils.ValueHelper;
 import bean.UserSession;
 
 import com.avaje.ebean.Expr;
@@ -18,11 +21,6 @@ import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
 import controllers.enums.ResponseCode;
-import play.libs.Json;
-import play.mvc.Controller;
-import play.mvc.Result;
-import utils.DateUtil;
-import utils.ValueHelper;
 /**
  * 事故案例分析
  * @author Administrator

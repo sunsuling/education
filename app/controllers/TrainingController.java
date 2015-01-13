@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
-import models.Law;
+import models.Training;
 import play.libs.Json;
 import play.mvc.Controller;
 import play.mvc.Result;
@@ -21,14 +21,10 @@ import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
 import controllers.enums.ResponseCode;
-/**
- * 法律
- * @author Administrator
- *
- */
-public class LawController extends Controller {
+
+public class TrainingController extends Controller{
 	public static Result list(){
-		return ok(views.html.lawList.render());
+		return ok(views.html.trainingList.render());
 	}
 	
 	// 结果集
@@ -40,7 +36,7 @@ public class LawController extends Controller {
         Map<String, String> formmap = form().bindFromRequest().data();
         String search = formmap.get("sSearch");
         
-        ExpressionList<Law> ele = Law.find.where();
+        ExpressionList<Training> ele = Training.find.where();
 
         	
         if (ValueHelper.isNotEmpty(search)) {
@@ -49,7 +45,7 @@ public class LawController extends Controller {
 
         ele.orderBy().desc("effectiveAt");
         int total = ele.findRowCount();
-        List<Law> ers = ele.setFirstRow(intpage).setMaxRows(maxrows).findList();
+        List<Training> ers = ele.setFirstRow(intpage).setMaxRows(maxrows).findList();
 
         ObjectNode objectNode = Json.newObject();
         objectNode.put("sEcho", sEchoint + 1);
@@ -57,10 +53,9 @@ public class LawController extends Controller {
         objectNode.put("iTotalDisplayRecords", String.valueOf(total));
         ArrayNode anode = objectNode.putArray("aaData");
 
-        for (Law row : ers) {
+        for (Training row : ers) {
 
             ObjectNode robjectNode = anode.addObject();
-
             robjectNode.put("id", row.id.toString());
             robjectNode.put("title", row.title);
             robjectNode.put("detail", row.detail);            
@@ -78,7 +73,7 @@ public class LawController extends Controller {
      * @return
      */
     public static Result add(){
-    	return ok(views.html.lawAdd.render());
+    	return ok(views.html.trainingAdd.render());
     }
     
     /**
@@ -99,20 +94,20 @@ public class LawController extends Controller {
             return ok(objectNode.toString());    		
     	}
     	
-    	Law law = new Law();
+    	Training training = new Training();
     	
     	Timestamp now = DateUtil.getCurrent();
     	String userId = UserSession.getCurrent(session()).userId;
     	
-    	law.title = title;
-    	law.detail = detail;
-    	law.effectiveAt = DateUtil.string2TimestampAuto(effectiveAt);
-    	law.createdAt = now;
-    	law.createdBy = userId;
-    	law.updatedAt = now;
-    	law.updatedBy = userId;
+    	training.title = title;
+    	training.detail = detail;
+    	training.effectiveAt = DateUtil.string2TimestampAuto(effectiveAt);
+    	training.createdAt = now;
+    	training.createdBy = userId;
+    	training.updatedAt = now;
+    	training.updatedBy = userId;
     	
-    	law.save();
+    	training.save();
     	
     	return ok(objectNode.toString());
     }
@@ -123,11 +118,11 @@ public class LawController extends Controller {
      * @return
      */
     public static Result edit(String id){
-    	Law law = Law.find(UUID.fromString(id));
+    	Training training = Training.find(UUID.fromString(id));
     	
-    	String effectiveAt = DateUtil.timestamp2String(law.effectiveAt);
+    	String effectiveAt = DateUtil.timestamp2String(training.effectiveAt);
     	
-    	return ok(views.html.lawEdit.render(law,effectiveAt));
+    	return ok(views.html.trainingEdit.render(training,effectiveAt));
     }
 
     /**
@@ -149,19 +144,19 @@ public class LawController extends Controller {
             return ok(objectNode.toString());    		
     	}
     	
-    	Law law = Law.find(UUID.fromString(id));
+    	Training training = Training.find(UUID.fromString(id));
     	
     	Timestamp now = DateUtil.getCurrent();
     	String userId = UserSession.getCurrent(session()).userId;
     	
-    	law.title = title;
-    	law.detail = detail;
-    	law.effectiveAt = DateUtil.string2TimestampAuto(effectiveAt);
+    	training.title = title;
+    	training.detail = detail;
+    	training.effectiveAt = DateUtil.string2TimestampAuto(effectiveAt);
     	
-    	law.updatedAt = now;
-    	law.updatedBy = userId;
+    	training.updatedAt = now;
+    	training.updatedBy = userId;
     	
-    	law.save();
+    	training.save();
     	
     	return ok(objectNode.toString());
     	
@@ -174,9 +169,9 @@ public class LawController extends Controller {
 	 * @return
 	 */
 	public static Result del(String id,String isDel){
-		Law law  = Law.find(UUID.fromString(id));
-		law.deleted = !Boolean.valueOf(isDel);
-		law.update();
+		Training training  = Training.find(UUID.fromString(id));
+		training.deleted = !Boolean.valueOf(isDel);
+		training.update();
 		return ok();
 	}
 
@@ -189,7 +184,7 @@ public class LawController extends Controller {
      */
     private static boolean checkRepeat(UUID id, String title) {
         int count = 1;
-        ExpressionList<Law> ele = Law.find.where();
+        ExpressionList<Training> ele = Training.find.where();
             ele.eq("title", title);
         
         if (ValueHelper.isNotEmpty(id)) {

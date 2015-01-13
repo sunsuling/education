@@ -1,11 +1,12 @@
 package models;
 
-import play.db.ebean.Model;
+import java.sql.Timestamp;
+import java.util.UUID;
 
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
-import java.sql.Timestamp;
-import java.util.UUID;
+
+import play.db.ebean.Model;
 
 @MappedSuperclass
 public abstract class BaseModel extends Model {

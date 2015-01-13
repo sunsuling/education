@@ -114,3 +114,60 @@ create table locality (
   constraint PK_LOCALITY primary key (id))
 ;
 create sequence locality_seq;
+
+--中心简介
+create table summary (
+  id                        varchar(255) not null,
+  created_by                varchar(255),
+  created_at                timestamp,
+  updated_by                varchar(255),
+  updated_at                timestamp,
+  deleted                   boolean,
+  title1                    varchar(255),
+  title2                    varchar(255),
+  title3                    varchar(255),
+  content1                  text,
+  content2                  text,
+  content3                  text,
+  name		                varchar(255) ,
+  address  					varchar(255) ,
+  phone 					varchar(255) ,
+  email 					varchar(255) ,
+  qq 						varchar(255) ,
+  fax 						varchar(255) ,
+  constraint PK_SUMMARY primary key (id))
+;
+create sequence summary_seq;
+
+--培训信息
+create table training (
+  id                        varchar(255) not null,
+  created_by                varchar(255),
+  created_at                timestamp,
+  updated_by                varchar(255),
+  updated_at                timestamp,
+  deleted                   boolean,
+  title                     varchar(255),
+  detail                    text,
+  effective_at			    timestamp ,
+  constraint PK_TRAINING primary key (id))
+;
+create sequence training_seq;
+
+--中心动态
+create table center_dynamic (
+  id                        varchar(255) not null,
+  created_by                varchar(255),
+  created_at                timestamp,
+  updated_by                varchar(255),
+  updated_at                timestamp,
+  deleted                   boolean,
+  title                     varchar(255),
+  detail                    text,
+  source					varchar(255),
+  effective_at			    timestamp ,
+  constraint PK_CENTER_DYNAMIC primary key (id))
+;
+create sequence dynamic_seq;
+
+

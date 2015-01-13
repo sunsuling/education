@@ -1,8 +1,9 @@
 package models;
 
+import java.util.UUID;
+
 import javax.persistence.Entity;
 import javax.persistence.Table;
-import java.util.UUID;
 
 @Entity
 @Table(name="account_user")
