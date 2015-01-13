@@ -84,3 +84,18 @@ public
            http://www.bootcss.com/p/font-awesome/#
            http://fontawesome.io/icons/
             
+--http://yufenfei.iteye.com/blog/1750124
+  Eclipse上安装GIT插件EGit
+
+如果是首次提交会第一步：先在本地建立一个一样的仓库，称本地仓库。
+
+          第二步：在本地进行commit操作将把更新提交到本地仓库；
+
+          第三步： 将服务器端的更新pull到本地仓库进行合并，最后将合并好的本地仓库push到服务器端，这样就进行了一次远程提交。
+          
+          如果非首次提交同样的道理
+
+          第一步：将修改的代码commit操作更新到本地仓库；
+
+         第二步：第三步： 将服务器端的更新pull到本地仓库进行合并，最后将合并好的本地仓库push到服务器端
+          
