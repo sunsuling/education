@@ -1,0 +1,44 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+GET         /                          controllers.Application.index()
+GET         /order                     controllers.Application.order()
+POST        /orderLogin                controllers.Application.orderLogin()
+POST        /login                     controllers.Application.login()
+GET         /logout                    controllers.Application.logout()
+
+# Map static resources from the /public folder to the /assets URL path
+GET         /assets/*file              controllers.Assets.at(path="/public", file)
+GET         /webjars/*file             controllers.WebJarAssets.at(file)
+
+#common
+POST        /common/uploadImage        @controllers.UploadController.uploadImage
+
+# user
+POST        /findUserInfo              @controllers.UserInfoController.findAll
+POST        /addUserInfo               @controllers.UserInfoController.add
+POST        /updateUserInfo            @controllers.UserInfoController.update
+POST        /deleteUserInfo            @controllers.UserInfoController.delete
+
+# menu
+POST        /findMenuInfo              @controllers.MenuInfoController.findAll
+POST        /addMenuInfo               @controllers.MenuInfoController.add
+POST        /updateMenuInfo            @controllers.MenuInfoController.update
+POST        /deleteMenuInfo            @controllers.MenuInfoController.delete
+
+# order
+POST        /findFood                  @controllers.MenuInfoController.findAll
+POST        /findOrderInfo             @controllers.OrderInfoController.findAll
+POST        /findByUser                @controllers.OrderInfoController.findByUser
+POST        /addOrderInfo              @controllers.OrderInfoController.add
+POST        /updateOrderInfo           @controllers.OrderInfoController.update
+POST        /deleteOrderInfo           @controllers.OrderInfoController.delete
+POST        /exportDailyTotal          @controllers.OrderInfoController.exportDailyOrderListTotal
+POST        /exportDailyDetail         @controllers.OrderInfoController.exportDailyOrderListDetail
+# rule
+POST        /findRule                  @controllers.RuleController.findAll
+POST        /addRule                   @controllers.RuleController.add
+POST        /updateRule                @controllers.RuleController.update
+POST        /deleteRule                @controllers.RuleController.delete
+
+

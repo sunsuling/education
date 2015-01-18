@@ -1,0 +1,83 @@
+body {
+    padding-top: 70px;
+    padding-bottom: 30px;
+}
+
+.theme-dropdown .dropdown-menu {
+    position: static;
+    display: block;
+    margin-bottom: 20px;
+}
+
+.theme-showcase > p > .btn {
+    margin: 5px 0;
+}
+
+.theme-showcase .navbar .container {
+    width: auto;
+}
+
+.table-column-wrap {
+    word-wrap: break-word;
+    word-break: break-all;
+}
+
+.gridStyle {
+    border: 1px solid rgb(212,212,212);
+    width: 100%;
+    height: 400px
+}
+
+.mediumGridStyle {
+    border: 1px solid rgb(212,212,212);
+    width: 100%;
+    height: 200px
+}
+
+.tableBorder {
+    border: solid 2px #E5DBDB;
+    margin-top: 33px;
+}
+
+.tdBorder {
+    border:solid 1px #E5DBDB;
+}
+
+.tdRightBorder {
+    border-right:solid 2px #E5DBDB;
+}
+
+.FUND-GRAB-STATUS-NULL {
+    background: yellow !important;
+}
+.FUND-GRAB-STATUS-OVERDUE {
+    background: red !important;
+}
+.FUND-GRAB-STATUS-SYNCHRONIZED {
+    background: green !important;
+}
+.GrayColor{
+    background: rgb(231, 230, 236) !important;
+}
+
+.file{ position:absolute;opacity: 0;left: 90px;top: 18px;width: 120px;}
+
+
+/*给分页框的内容区加边距和边框*/
+.tab-content.tab-bordered {
+    border: 1px solid lightgray;
+    border-top: none;
+    padding: 15px;
+    border-radius: 0 0 4px 4px;
+}
+
+.gridStyle-little {
+    border: 1px solid rgb(212,212,212);
+    width: 560px;
+    height: 200px;
+}
+.col-padding {
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+    padding-bottom: 2px !important;
+}

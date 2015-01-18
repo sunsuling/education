@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	@css()
+</head>
+<body>
+			<div class="row-fluid sortable">
+				<div class="box span12">
+					<div class="box-header well" data-original-title>
+						<h2><i class="icon-edit"></i>中心动态信息</h2>
+						
+					</div>
+					<div class="box-content">
+						<form class="form-horizontal" id="form">
+							<div class="control-group">
+							  <label class="control-label">标题<font color="red">*</font></label>
+							  <div class="controls">
+									<input type="text"  id="title" name="title" maxlength="300">
+							  </div>
+							</div>
+							<div class="control-group">
+							  <label class="control-label">详细内容<font color="red">*</font></label>
+							  <div class="controls">
+							  		<textarea  class="cleditor" id="detail" name="detail" rows="3" ></textarea>
+							  </div>
+							</div>
+							<div class="control-group">
+							  <label class="control-label">来源<font color="red">*</font></label>
+							  <div class="controls">
+							  		<input type="text" id="source" name="source" maxlength="300">
+							  </div>
+							</div>
+							<div class="control-group">
+									<label class="control-label">生效日期</label>
+									<div class="controls">
+										 <input type="text" class="datepicker" id="effectiveAt" name="effectiveAt" readonly="readonly">
+									</div>
+							</div>
+							<div id="error" style="display:none" class="alert alert-error">
+							</div>
+							<div class="form-actions">
+							  <button type="button" id="save" class="btn btn-primary">保存</button>
+							  <button type="reset" class="btn" onclick="Shadowbox.close();">取消</button>
+							</div>
+						</form>   
+					</div>
+				</div><!--/span-->
+
+			</div><!--/row-->
+
+
+	@script()
+	<script type="text/javascript">
+	
+	    var Shadowbox = window.parent.Shadowbox; 
+		 
+	    function alerterror(msg){
+	    	$("#error").show();
+			$("#error").text(msg);	
+	    }
+	    
+		$("#save").click(function() {
+			 var message =$.trim($("#title").val());
+			 var detail =$.trim($("#detail").val());
+			
+			 if(message ==null ||message == ""){ 
+				 $("#title").focus();
+				 alerterror("中心动态名称必须填写！");
+				 return false;
+			 }
+			 
+			  if(detail == null ||  detail ==""){
+				  alerterror("中心动态详细信息必须填写！");
+				  $("#detail").focus();
+				  return false;
+			  }
+			$.post("/education/admin/centerDynamic/save", $("#form").serialize(),function(data){
+					if("REPEATCODE" == data.responseCode){
+						 $("#title").focus();
+						alerterror("中心动态名称已存在！");
+						return ;
+					}
+					
+					window.parent.greload();
+					window.parent.alertrs("success","新增中心动态成功");
+					Shadowbox.close();
+					
+			   }, "json");
+		});
+		
+	</script>
+</body>
+</html>

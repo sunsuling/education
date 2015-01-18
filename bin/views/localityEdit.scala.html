@@ -1,0 +1,106 @@
+@(locality:Locality,effectiveAt:String)
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	@css()
+</head>
+<body>
+			<div class="row-fluid sortable">
+				<div class="box span12">
+					<div class="box-header well" data-original-title>
+						<h2><i class="icon-edit"></i>地方法规信息</h2>
+						
+					</div>
+					<div class="box-content">
+						<form class="form-horizontal" id="form">
+							<div class="control-group">
+							  <label class="control-label">地方法规名称<font color="red">*</font></label>
+							  <div class="controls">
+									<input type="text"  id="title" name="title" value="@locality.title" maxlength="300">
+							  </div>
+							</div>
+							<div class="control-group">
+							  <label class="control-label">地方法规详细信息<font color="red">*</font></label>
+							  <div class="controls">
+							  		<textarea class="cleditor"  id="detail" name="detail" rows="3" >@locality.detail</textarea>
+							  </div>
+							</div>
+							<div class="control-group">
+									<label class="control-label">地方法规生效日期</label>
+									<div class="controls">
+										 <input type="text" class="datepicker" id="effectiveAt" name="effectiveAt" value="@effectiveAt" readonly="readonly">
+									</div>
+							</div>
+							
+							<input type="hidden" name="id" id="id" value="@locality.id">
+							<div id="error" style="display:none" class="alert alert-error">
+							</div>
+							<div class="form-actions">
+							  <button type="button" id="save" class="btn btn-primary">保存</button>
+							  <button type="reset" class="btn" onclick="Shadowbox.close();">取消</button>
+							</div>
+						</form>   
+					</div>
+				</div><!--/span-->
+
+			</div><!--/row-->
+
+
+	@script()
+	<script src="@routes.Assets.at("javascripts/validate.js")"></script>
+	<script type="text/javascript">
+	
+	    var Shadowbox = window.parent.Shadowbox; 
+		 
+	    function alerterror(msg){
+	    	$("#error").show();
+			$("#error").text(msg);	
+	    }
+	    
+		$("#save").click(function() {
+			 var title =$.trim($("#title").val());
+			 var detail =$.trim($("#detail").val());
+			 var effectiveAt = $.trim($("#effectiveAt").val());
+			
+			 if(title ==null ||title == ""){ 
+				 $("#title").focus();
+				 alerterror("地方法规名称必须填写！");
+				 return false;
+			 }
+			 
+			  if(detail == null ||  detail ==""){
+				  alerterror("地方法规详细信息必须填写！");
+				  $("#detail").focus();
+				  return false;
+			  }
+			  	if(effectiveAt == null || effectiveAt == ""){
+			  		alerterror("地方法规生效时间必须填写！");
+					  $("#effectiveAt").focus();
+					  return false;
+					}else{
+						if(!validateDate(effectiveAt)){
+							$('#effectiveAt').focus();
+							alerterror("您输入的生效时间格式不正确！");
+							return false;
+						}
+					}
+					
+			$.post("/education/admin/locality/update", $("#form").serialize(),function(data){
+					if("REPEATCODE" == data.responseCode){
+						 $("#title").focus();
+						alerterror("地方法规名称已存在！");
+						return ;
+					}
+					
+					window.parent.greload();
+					window.parent.alertrs("success","更新地方法规成功");
+					Shadowbox.close();
+					
+			   }, "json");
+		});
+		
+	</script>
+</body>
+</html>
