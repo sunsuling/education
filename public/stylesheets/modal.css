@@ -1,0 +1,16 @@
+.modal-dialog{
+    width: 500px;
+    margin: 198px auto;
+}
+.modal-dialog label{
+    margin-left: 5px;
+    background-color: #b2acaf;
+}
+.modal-dialog tr{
+    margin-top: 5px;
+}
+
+.modal-dialog td{
+    padding-top: 10px;
+    padding-bottom: 10px;
+}

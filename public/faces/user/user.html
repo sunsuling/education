@@ -1,0 +1,53 @@
+<link rel="stylesheet" media='screen' href='../../assets/stylesheets/modal.css'>
+<div class="row" ng-controller="UserInfoCtrl as uc">
+    <div class="row">
+        <h1>
+            用户信息
+        </h1>
+        <hr>
+    </div>
+    <div class="row">
+        <div class="form-group" align="right">
+            <a class="btn btn-primary submit" ng-click="addRow()">新增</a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="well well-lg">
+            <div class="gridStyle" ng-grid="gridOptions"></div>
+        </div>
+    </div>
+
+
+    <script type="text/ng-template" id="UserModalContent.html" controller="UserModalCtrl">
+        <form role="form" ng-submit="update()">
+            <table>
+                <tbody>
+                <div class="modal-body">
+                    <tr>
+                        <td>
+                            <label class="control-label">用户名:</label>
+                        </td>
+                        <td>
+                            <input class="form-control" type="text" name="productName" required
+                                   ng-model="user.userName">
+                        </td>
+                        <td>
+                            <label class="control-label">邮箱:</label>
+                        </td>
+                        <td>
+                            <input class="form-control" type="text" name="productName" required
+                                   ng-model="user.email">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="4" align="right">
+                            <button type="submit" class="btn btn-success">确定</button>
+                            <a ng-click="cancel()" class="btn btn-warning">取消</a>
+                        </td>
+                    </tr>
+                </div>
+                </tbody>
+            </table>
+        </form>
+    </script>
+</div>

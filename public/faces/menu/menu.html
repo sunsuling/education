@@ -1,0 +1,73 @@
+<link rel="stylesheet" media='screen' href='../../assets/stylesheets/modal.css'>
+<div class="row" ng-controller="MenuInfoCtrl as uc">
+    <div class="row">
+        <h1>
+            菜单信息
+        </h1>
+        <hr>
+    </div>
+    <div class="row">
+        <div class="form-group" align="right">
+            <a class="btn btn-primary submit" ng-click="addRow()">新增</a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="well well-lg">
+            <div class="gridStyle" ng-grid="gridOptions"></div>
+        </div>
+    </div>
+
+
+    <script type="text/ng-template" id="MenuModalContent.html" controller="MenuModalCtrl">
+        <form role="form" ng-submit="update()">
+            <table>
+                <tbody>
+                <div class="modal-body">
+                    <tr>
+                        <td>
+                            <label class="control-label">菜名:</label>
+                        </td>
+                        <td>
+                            <input class="form-control" type="text" name="foodName" required
+                                   ng-model="food.foodName">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label class="control-label">价格:</label>
+                        </td>
+                        <td>
+                            <input class="form-control" type="text" name="price" required
+                                   ng-model="food.priceStr">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label class="control-label">类别:<br>(主\辅菜)</label>
+                        </td>
+                        <td>
+                            <input class="form-control" type="text" name="foodType" required
+                                   ng-model="food.foodType">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label class="control-label">来源:<br>(饭店名)</label>
+                        </td>
+                        <td>
+                            <input class="form-control" type="text" name="source" required
+                                   ng-model="food.source">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="4" align="right">
+                            <button type="submit" class="btn btn-success">确定</button>
+                            <a ng-click="cancel()" class="btn btn-warning">取消</a>
+                        </td>
+                    </tr>
+                </div>
+                </tbody>
+            </table>
+        </form>
+    </script>
+</div>
