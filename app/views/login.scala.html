@@ -8,7 +8,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="description" content="Charisma, a fully featured, responsive, HTML5, Bootstrap admin template.">
 	<meta name="author" content="Muhammad Usman">
-	
+
 
 	@css()
 		
@@ -24,19 +24,20 @@
 				</div><!--/span-->
 			</div><!--/row-->
 			
-			<div class="row-fluid">
+			<div class="row-fluid" ng-app="login-app" ng-controller="loginController">
+
 				<div class="well span5 center login-box">
 				   
 					<div class="alert alert-info " id="loginerror" >请输入用户名和密码</div>
-					<form class="form-horizontal" autocomplete="off" action="/education/admin/dologin" method="post" target="_parent" >
+					<form class="form-horizontal" autocomplete="off" target="_parent" ng-submit="login()">
 						<fieldset>
 							<div class="input-prepend" title="用户名" data-rel="tooltip">
-								<span class="add-on"><i class="icon-user"></i></span><input autofocus class="input-large span10" name="username" id="username" type="text" value="" />
+								<span class="add-on"><i class="icon-user"></i></span><input autofocus class="input-large span10"  ng-model="accountUser.username" required/>
 							</div>
 							<div class="clearfix"></div>
 
 							<div class="input-prepend" title="密码" data-rel="tooltip">
-								<span class="add-on"><i class="icon-lock"></i></span><input class="input-large span10" name="password" id="password" type="password" value="" />
+								<span class="add-on"><i class="icon-lock"></i></span><input class="input-large span10" ng-model="accountUser.password" required/>
 							</div>
 							<div class="clearfix"></div>
 
@@ -63,34 +64,31 @@
 	@script()
 	<script type="text/javascript">
 	 @if(flash.get("error")!=null){
-		   
-		   $("#loginerror").attr("class","alert alert-error");	
+		   $("#loginerror").attr("class","alert alert-error");
 		   $("#loginerror").html("@flash.get("error")");
-		   
 	   }
-	
-		$("form").submit( function () {
-			
-			 
-			 if($("#username").val().trim()==""){
-				 $("#loginerror").attr("class","alert alert-error");	
-				 $("#loginerror").html("请填写用户名！");
-				 
-				 return false; 
-				 
-			 }else if($("#password").val().trim()==""){
-				 $("#loginerror").attr("class","alert alert-error");	
-				 $("#loginerror").html("请填写密码！");
-				
-				 return false;
-			 }
-			 
-			  
-			  return true;
-		} );
-	
+
 	</script>
-	
+
+    <script>
+        var app = angular.module("login-app", []);
+        app.controller("loginController", function($scope, $q, $http ) {
+            $scope.accountUser = {};
+            $scope.login = function() {
+                var deferred ;
+                console.debug ( " login()" ) ;
+                deferred = $q.defer ( ) ;
+
+                $http.post ("/education/admin/dologin", $scope.accountUser ).then ( function ( data ) {
+                     console.info ( "Successfully login " ) ;
+                     return deferred.resolve ( data ) ;
+                }, function ( data, status ) {
+                     console.error ( "Failed to login - status " + status ) ;
+                     return deferred.reject ( data ) ;
+                } ) ;
+            }
+        });
+    </script>
 
 
 		

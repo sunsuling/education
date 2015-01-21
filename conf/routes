@@ -16,6 +16,7 @@ POST        /accident/analysis                              controllers.Accident
 # Map static resources from the /public folder to the /assets URL path
 GET         /assets/*file                                   controllers.Assets.at(path="/public", file)
 POST        /assets/*file                                   controllers.Assets.at(path="/public", file)
+GET         /webjars/*file                                  controllers.WebJarAssets.at(file)
 
 # 登陆
 GET         /education/admin/doregister                     controllers.ApplicationController.doRegister
@@ -104,4 +105,4 @@ POST        /education/admin/training/del                   controllers.Training
 
 
 # 前端页面
-GET        /front/home                                      @controllers.HomeController.list
+#GET         /front/home                                     @controllers.HomeController.list
