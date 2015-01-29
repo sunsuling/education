@@ -40,6 +40,7 @@ public class ApplicationController extends Controller {
         }else if(user.accountType == 2){
             // 管理员登陆
             UserSession.setCurrent(user);
+            System.out.println("------------------chenggong-----------------");
             return ok(views.html.admin.render());
         }
 
