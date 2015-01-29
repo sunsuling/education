@@ -1,0 +1,68 @@
+@(body:Html)
+<html>
+<head>
+    <base href="<%=basePath%>">
+    <title>XXXXXXXXX</title>
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta http-equiv="expires" content="0">
+    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="This is my page">
+    <link rel="stylesheet" href="@routes.Assets.at("module/bootstrap/css/bootstrap.min.css")">
+    <link rel="stylesheet" href="@routes.Assets.at("module/bootstrap/css/bootstrap-theme.min.css")">
+    <script src="@routes.Assets.at("javascripts/jquery-1.11.1.min.js")"></script>
+    <script src="@routes.Assets.at("module/bootstrap/js/2.3.2/bootstrap.min.js")"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="row clearfix">
+            <div class="col-md-12 column">
+                <nav class="navbar navbar-default" role="navigation">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button> <a class="navbar-brand" href="#">HAITAI</a>
+                    </div>
+
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                        <ul class="nav navbar-nav">
+                            <li class="active">
+                                <a href="/shouye">首页</a>
+                            </li>
+                            <li >
+                                <a href="/">中心简介</a>
+                            </li>
+                            <li>
+                                <a href="#">中心动态</a>
+                            </li>
+                            <li>
+                                <a href="#">政策法规</a>
+                            </li>
+                            <li>
+                                <a href="#">事故案例</a>
+                            </li>
+                            <li>
+                                <a href="#">联系我们</a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </div>
+        <div class="row clearfix">
+            @body
+        </div>
+        <div class="row clearfix">
+            <div class="col-md-12 column">
+                <table width="995" border="0" align="center" cellpadding="0" cellspacing="0">
+                    <tr>
+                        <td height="28" align="center" background="images/btline.jpg"><a href="about.asp" class="white2">关于我们</a><font color="#FFFFFF">  |  </font><a href="news.asp" class="white2">新闻资讯</a><font color="#FFFFFF">  |  </font><a href="product.asp" class="white2">产品中心</a><font color="#FFFFFF">  |  </font> <a href="rczp.asp" class="white2">合作伙伴</a><font color="#FFFFFF">  |  </font><a href="contact.asp" class="white2">联系我们</a><font color="#FFFFFF">  |  </font></td>
+                    </tr>
+                    <tr>
+                        <td align="center" class="high2"><font color="#a7a7a7">Copyright &copy; 2013-2014 All Rights Reserved. 版权所有:无锡翰泰科技有限公司 技术支持：<a href="http://www.yz168.net" target="_blank" class="cp3">无锡远征软件科技有限公司</a><br />
+                            地址：江苏省无锡市锡山区安镇镇东盛路大成创业园A区45号西楼  邮编：214105  电 话：0510-88532838 13771382190 传真：0510-88531428</font></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
