@@ -20,7 +20,7 @@ POST        /assets/*file                                   controllers.Assets.a
 # 登陆
 GET         /education/admin/doregister                     controllers.ApplicationController.doRegister
 POST        /education/admin/register                       controllers.ApplicationController.register
-POST        /education/admin/dologin  			            controllers.ApplicationController.doLogin
+POST        /education/admin/dologin                        controllers.ApplicationController.doLogin
 
 # 联系我们
 GET         /education/admin/contact                        controllers.ContactController.contact
@@ -29,75 +29,80 @@ POST        /education/admin/saveinformation                controllers.ContactC
 # 事故快报
 GET         /education/admin/accidentLetters                controllers.AccidentLettersController.list()
 GET         /education/admin/accidentLetters/listrs         controllers.AccidentLettersController.listRs(sEcho,iDisplayStart,iDisplayLength)
-GET         /education/admin/accidentLetters/add		    controllers.AccidentLettersController.add()
+GET         /education/admin/accidentLetters/add            controllers.AccidentLettersController.add()
 POST        /education/admin/accidentLetters/save           controllers.AccidentLettersController.save()
-GET         /education/admin/accidentLetters/edit	   	    controllers.AccidentLettersController.edit()
-POST        /education/admin/accidentLetters/update	        controllers.AccidentLettersController.update()
-POST        /education/admin/accidentLetters/del	   	    controllers.AccidentLettersController.del(id,isDel)
+GET         /education/admin/accidentLetters/edit           controllers.AccidentLettersController.edit()
+POST        /education/admin/accidentLetters/update         controllers.AccidentLettersController.update()
+POST        /education/admin/accidentLetters/del            controllers.AccidentLettersController.del(id,isDel)
 
 # 事故案例分析
-GET         /education/admin/accidentAnalysis             	controllers.AccidentAnalysisController.list()
+GET         /education/admin/accidentAnalysis               controllers.AccidentAnalysisController.list()
 GET         /education/admin/accidentAnalysis/listrs        controllers.AccidentAnalysisController.listRs(sEcho,iDisplayStart,iDisplayLength)
-GET         /education/admin/accidentAnalysis/add		   	controllers.AccidentAnalysisController.add()
+GET         /education/admin/accidentAnalysis/add           controllers.AccidentAnalysisController.add()
 POST        /education/admin/accidentAnalysis/save          controllers.AccidentAnalysisController.save()
-GET         /education/admin/accidentAnalysis/edit	   	    controllers.AccidentAnalysisController.edit()
-POST        /education/admin/accidentAnalysis/update	    controllers.AccidentAnalysisController.update()
-POST        /education/admin/accidentAnalysis/del	   	    controllers.AccidentAnalysisController.del(id,isDel)
+GET         /education/admin/accidentAnalysis/edit          controllers.AccidentAnalysisController.edit()
+POST        /education/admin/accidentAnalysis/update        controllers.AccidentAnalysisController.update()
+POST        /education/admin/accidentAnalysis/del           controllers.AccidentAnalysisController.del(id,isDel)
 
 
 # 法律
-GET         /education/admin/law              			    controllers.LawController.list()
-GET         /education/admin/law/listrs       			    controllers.LawController.listRs(sEcho,iDisplayStart,iDisplayLength)
-GET         /education/admin/law/add		    			controllers.LawController.add()
-POST        /education/admin/law/save         			    controllers.LawController.save()
-GET         /education/admin/law/edit						controllers.LawController.edit(id)
-POST        /education/admin/law/update					    controllers.LawController.update()
-POST        /education/admin/law/del	   	   				controllers.LawController.del(id,isDel)
+GET         /education/admin/law                            controllers.LawController.list()
+GET         /education/admin/law/listrs                     controllers.LawController.listRs(sEcho,iDisplayStart,iDisplayLength)
+GET         /education/admin/law/add                        controllers.LawController.add()
+POST        /education/admin/law/save                       controllers.LawController.save()
+GET         /education/admin/law/edit                       controllers.LawController.edit(id)
+POST        /education/admin/law/update                     controllers.LawController.update()
+POST        /education/admin/law/del                        controllers.LawController.del(id,isDel)
 
 # 行政法规
-GET         /education/admin/regulation              		controllers.RegulationController.list()
-GET         /education/admin/regulation/listrs       		controllers.RegulationController.listRs(sEcho,iDisplayStart,iDisplayLength)
-GET         /education/admin/regulation/add		    	    controllers.RegulationController.add()
-POST        /education/admin/regulation/save         		controllers.RegulationController.save()
-GET         /education/admin/regulation/edit				controllers.RegulationController.edit(id)
-POST        /education/admin/regulation/update			    controllers.RegulationController.update()
-POST        /education/admin/regulation/del	   	   		    controllers.RegulationController.del(id,isDel)
+GET         /education/admin/regulation                     controllers.RegulationController.list()
+GET         /education/admin/regulation/listrs              controllers.RegulationController.listRs(sEcho,iDisplayStart,iDisplayLength)
+GET         /education/admin/regulation/add                 controllers.RegulationController.add()
+POST        /education/admin/regulation/save                controllers.RegulationController.save()
+GET         /education/admin/regulation/edit                controllers.RegulationController.edit(id)
+POST        /education/admin/regulation/update              controllers.RegulationController.update()
+POST        /education/admin/regulation/del                 controllers.RegulationController.del(id,isDel)
 
 #部门规章
-GET         /education/admin/department              		controllers.DepartmentController.list()
-GET         /education/admin/department/listrs       		controllers.DepartmentController.listRs(sEcho,iDisplayStart,iDisplayLength)
-GET         /education/admin/department/add		    	    controllers.DepartmentController.add()
-POST        /education/admin/department/save         		controllers.DepartmentController.save()
-GET         /education/admin/department/edit				controllers.DepartmentController.edit(id)
-POST        /education/admin/department/update			    controllers.DepartmentController.update()
-POST        /education/admin/department/del	   	   		    controllers.DepartmentController.del(id,isDel)
+GET         /education/admin/department                     controllers.DepartmentController.list()
+GET         /education/admin/department/listrs              controllers.DepartmentController.listRs(sEcho,iDisplayStart,iDisplayLength)
+GET         /education/admin/department/add                 controllers.DepartmentController.add()
+POST        /education/admin/department/save                controllers.DepartmentController.save()
+GET         /education/admin/department/edit                controllers.DepartmentController.edit(id)
+POST        /education/admin/department/update              controllers.DepartmentController.update()
+POST        /education/admin/department/del                 controllers.DepartmentController.del(id,isDel)
 #地方法规
-GET         /education/admin/locality              		    controllers.LocalityController.list()
-GET         /education/admin/locality/listrs       		    controllers.LocalityController.listRs(sEcho,iDisplayStart,iDisplayLength)
-GET         /education/admin/locality/add		    		controllers.LocalityController.add()
-POST        /education/admin/locality/save         		    controllers.LocalityController.save()
-GET         /education/admin/locality/edit				    controllers.LocalityController.edit(id)
-POST        /education/admin/locality/update				controllers.LocalityController.update()
-POST        /education/admin/locality/del	   	   			controllers.LocalityController.del(id,isDel)
+GET         /education/admin/locality                       controllers.LocalityController.list()
+GET         /education/admin/locality/listrs                controllers.LocalityController.listRs(sEcho,iDisplayStart,iDisplayLength)
+GET         /education/admin/locality/add                   controllers.LocalityController.add()
+POST        /education/admin/locality/save                  controllers.LocalityController.save()
+GET         /education/admin/locality/edit                  controllers.LocalityController.edit(id)
+POST        /education/admin/locality/update                controllers.LocalityController.update()
+POST        /education/admin/locality/del                   controllers.LocalityController.del(id,isDel)
 
 #summary
 GET         /education/admin/summary                        controllers.SummaryController.summary()
 POST        /education/admin/summary/saveinformation        controllers.SummaryController.saveInformation
 
 #centerDynamic
-GET         /education/admin/centerDynamic              	controllers.CenterDynamicController.list()
-GET         /education/admin/centerDynamic/listrs       	controllers.CenterDynamicController.listRs(sEcho,iDisplayStart,iDisplayLength)
-GET         /education/admin/centerDynamic/add		    	controllers.CenterDynamicController.add()
-POST        /education/admin/centerDynamic/save         	controllers.CenterDynamicController.save()
-GET         /education/admin/centerDynamic/edit				controllers.CenterDynamicController.edit(id)
-POST        /education/admin/centerDynamic/update			controllers.CenterDynamicController.update()
-POST        /education/admin/centerDynamic/del	   	   		controllers.CenterDynamicController.del(id,isDel)
+GET         /education/admin/centerDynamic                  controllers.CenterDynamicController.list()
+GET         /education/admin/centerDynamic/listrs           controllers.CenterDynamicController.listRs(sEcho,iDisplayStart,iDisplayLength)
+GET         /education/admin/centerDynamic/add              controllers.CenterDynamicController.add()
+POST        /education/admin/centerDynamic/save             controllers.CenterDynamicController.save()
+GET         /education/admin/centerDynamic/edit             controllers.CenterDynamicController.edit(id)
+POST        /education/admin/centerDynamic/update           controllers.CenterDynamicController.update()
+POST        /education/admin/centerDynamic/del              controllers.CenterDynamicController.del(id,isDel)
 
 #training
-GET         /education/admin/training              		    controllers.TrainingController.list()
-GET         /education/admin/training/listrs       		    controllers.TrainingController.listRs(sEcho,iDisplayStart,iDisplayLength)
-GET         /education/admin/training/add		    		controllers.TrainingController.add()
-POST        /education/admin/training/save         		    controllers.TrainingController.save()
-GET         /education/admin/training/edit				    controllers.TrainingController.edit(id)
-POST        /education/admin/training/update				controllers.TrainingController.update()
-POST        /education/admin/training/del	   	   			controllers.TrainingController.del(id,isDel)
+GET         /education/admin/training                       controllers.TrainingController.list()
+GET         /education/admin/training/listrs                controllers.TrainingController.listRs(sEcho,iDisplayStart,iDisplayLength)
+GET         /education/admin/training/add                   controllers.TrainingController.add()
+POST        /education/admin/training/save                  controllers.TrainingController.save()
+GET         /education/admin/training/edit                  controllers.TrainingController.edit(id)
+POST        /education/admin/training/update                controllers.TrainingController.update()
+POST        /education/admin/training/del                   controllers.TrainingController.del(id,isDel)
+
+
+
+# 前端
+GET          /education/front/home                           controllers.front.HomegController.home()
