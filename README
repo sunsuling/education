@@ -93,3 +93,7 @@ public
 
           第三步： 将服务器端的更新pull到本地仓库进行合并，最后将合并好的本地仓库push到服务器端，这样就进行了一次远程提交。
           
+          
+          
+  sql优化:
+     http://www.cnblogs.com/ATree/archive/2011/02/13/sql_optimize_1.html
