@@ -106,3 +106,5 @@ POST        /education/admin/training/del                   controllers.Training
 
 # 前端
 GET          /education/front/home                           controllers.front.HomegController.home()
+GET 		 /education/front/centerDynamic					 controllers.front.HomegController.centerDynamic(id)
+GET			 /education/front/centerDynamicMore				 controllers.front.HomegController.centerDynamicMore()

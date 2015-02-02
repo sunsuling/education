@@ -1,0 +1,31 @@
+@(centerDynamicList:List[CenterDynamic])
+@frontMain{
+	<div class="container-fluid">
+		<div class="row-fluid">
+				
+			<!-- left menu starts -->
+			<div class="col-md-2 main-menu-span" >
+				<div class="well nav-collapse sidebar-nav">
+					<ul class="nav nav-tabs nav-stacked main-menu">
+						<li><a href="/education/front/home"><i class="icon-picture"></i><span class="hidden-tablet">首页</span></a></li>
+					</ul>
+				</div>
+			</div>
+			<!-- left menu ends -->
+			
+			<div id="content" class="col-md-10">
+				<ul class="list-group">
+				@for(i<- centerDynamicList){
+				  <li class="list-group-item"><a href="/education/front/centerDynamic?id=@i.id">@i.title</a>
+				  	<span style="float:right">@i.effectiveAt	
+						</span>
+				  </li>
+				}
+				</ul>
+			</div><!--/#content.span10-->
+		
+		</div><!--/fluid-row-->
+				
+		<hr>
+	</div>
+}

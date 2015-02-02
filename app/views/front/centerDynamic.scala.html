@@ -1,0 +1,40 @@
+@(centerDynamic:CenterDynamic)
+@frontMain{
+	<div class="container-fluid">
+		<div class="row-fluid">
+				
+			<!-- left menu starts -->
+			<div class="col-md-2 main-menu-span" >
+				<div class="well nav-collapse sidebar-nav">
+					<ul class="nav nav-tabs nav-stacked main-menu">
+						<li><a href="/education/front/home"><i class="icon-picture"></i><span class="hidden-tablet">首页</span></a></li>
+					</ul>
+				</div>
+			</div>
+			<!-- left menu ends -->
+			
+			<div id="content" class="col-md-10">
+				<div class="container-fluid">
+					<div class="row-fluid">
+						<div class="span12">
+							<h3 class="text-center">
+								@centerDynamic.title
+							</h3>
+								<p class="text-center">
+									日期：@centerDynamic.effectiveAt								
+								</p>
+							<p>
+								@centerDynamic.detail
+							</p>
+						</div>
+					</div>
+				</div>
+			</div><!--/#content.span10-->
+				</div><!--/fluid-row-->
+				
+		<hr>
+
+		
+		
+	</div>
+}

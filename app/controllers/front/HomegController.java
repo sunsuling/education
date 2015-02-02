@@ -1,5 +1,8 @@
 package controllers.front;
 
+import java.util.List;
+import java.util.UUID;
+
 import com.avaje.ebean.ExpressionList;
 import models.CenterDynamic;
 import models.Contact;
@@ -16,9 +19,20 @@ public class HomegController extends Controller {
 
             // 中心动态
             ExpressionList<CenterDynamic> centerDynamicEle = CenterDynamic.find.where();
-            CenterDynamic centerDynamic= centerDynamicEle.orderBy().desc("updatedAt").setMaxRows(1).findUnique();
 
-
-            return ok(views.html.front.shouye.render(contact,centerDynamic));
+            List<CenterDynamic> centerDynamicList = centerDynamicEle.findList();
+            
+            return ok(views.html.front.shouye.render(contact,centerDynamicList));
+        }
+        
+        public static Result centerDynamic(String id){
+        	CenterDynamic centerDynamic = CenterDynamic.find(UUID.fromString(id));
+        	return ok(views.html.front.centerDynamic.render(centerDynamic));
+        }
+        
+        public static Result centerDynamicMore(){
+        	ExpressionList<CenterDynamic> centerDynamicEle = CenterDynamic.find.where();
+            List<CenterDynamic> centerDynamicList = centerDynamicEle.findList();
+        	return ok(views.html.front.centerDynamicMore.render(centerDynamicList));
         }
 }
