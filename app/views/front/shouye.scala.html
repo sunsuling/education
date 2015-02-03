@@ -1,35 +1,70 @@
-@(contact:Contact,centerDynamicList: List[CenterDynamic])
+@(contact:Contact,summary:Summary,centerDynamicList: List[CenterDynamic],trainingList:List[Training])
 @frontMain{
     <div class="row clearfix">
+       	 <div class="col-md-4 column">
+            <h3>
+                中心简介
+            </h3>
+            <div class="container-fluid">
+				<div class="row-fluid">
+					<div class="span12">
+						<div class="media">
+							 <a class="pull-left"><img src= @routes.Assets.at("images/list06.png")  class="media-object" alt='' /></a>
+							@summary.content1
+						</div>
+					</div>
+				</div>
+			</div>
+            
+        </div>
         <div class="col-md-4 column">
             <h3>
                 新闻动态
             </h3>
-            <div>
-				<table>
-				@for(i <- centerDynamicList){
-					<tr>
-						<td>
-						<a href="/education/front/centerDynamic?id=@i.id">	@i.title </a>	
-						</td>
-					</tr>
-				}
-				
-				</table>
-			</div>					
-            <p>
-                <a class="btn" href="/education/front/centerDynamicMore">更多»</a>
-            </p>
+            <div class="container-fluid">
+				<div class="row-fluid">
+					<div class="span12">
+						<table>
+						@for(i <- centerDynamicList){
+							<tr class="table">
+								<td>
+								<a href="/education/front/centerDynamic?id=@i.id">@i.title </a>	
+								</td>
+							</tr>
+						}
+						
+						</table>
+					</div>
+				</div>
+			</div>
+                <a class="btn" href="/education/front/centerDynamicMore" style="float:right">更多»</a>
         </div>
         <div class="col-md-4 column">
             <h3>
-                中心简介
+                培训信息
             </h3>
-            <p>
-            <p>
-                <a class="btn" href="#">更多 »</a>
-            </p>
+            <div class="container-fluid">
+				<div class="row-fluid">
+					<div class="span12">
+					@if(trainingList != null) {
+						<table>
+						@for(i <- trainingList){
+							<tr class="table">
+								<td>
+								<a href="/education/front/training?id=@i.id">@i.title </a>	
+								</td>
+							</tr>
+						}
+						</table>
+					}else{
+						暂无数据！！
+					}
+					</div>
+				</div>
+			</div>
+                <a class="btn" href="/education/front/trainingMore" style="float:right">更多»</a>
         </div>
+        <!-- 
         <div class="col-md-4 column">
             <h2>
                 联系我们
@@ -38,9 +73,10 @@
                    @contact.contactName :@contact.phone
             </p>
             <p>
-                <a class="btn" href="#">View details »</a>
+                <a class="btn" href="#" style="float:right">更多 »</a>
             </p>
         </div>
+         -->
     </div>
     <div class="row clearfix">
         <div class="row clearfix">

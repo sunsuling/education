@@ -3,10 +3,15 @@ package controllers.front;
 import java.util.List;
 import java.util.UUID;
 
-import com.avaje.ebean.ExpressionList;
 import models.CenterDynamic;
 import models.Contact;
-import play.mvc.*;
+import models.Summary;
+import models.Training;
+import play.mvc.Controller;
+import play.mvc.Result;
+import utils.ValueHelper;
+
+import com.avaje.ebean.ExpressionList;
 
 /**
  * Created by Administrator on 2015/1/29.
@@ -19,10 +24,16 @@ public class HomegController extends Controller {
 
             // 中心动态
             ExpressionList<CenterDynamic> centerDynamicEle = CenterDynamic.find.where();
-
             List<CenterDynamic> centerDynamicList = centerDynamicEle.findList();
             
-            return ok(views.html.front.shouye.render(contact,centerDynamicList));
+            //中心简介
+            ExpressionList<Summary> summaryEle = Summary.find.where();
+            Summary summary = summaryEle.orderBy().desc("updatedAt").setMaxRows(1).findUnique();
+            
+            //培训信息
+            ExpressionList<Training> trainingEle = Training.find.where();
+            List<Training> trainingList = trainingEle.findList();
+            return ok(views.html.front.shouye.render(contact,summary,centerDynamicList,trainingList));
         }
         
         public static Result centerDynamic(String id){
@@ -34,5 +45,16 @@ public class HomegController extends Controller {
         	ExpressionList<CenterDynamic> centerDynamicEle = CenterDynamic.find.where();
             List<CenterDynamic> centerDynamicList = centerDynamicEle.findList();
         	return ok(views.html.front.centerDynamicMore.render(centerDynamicList));
+        }
+        
+        public static Result training(String id){
+        	Training training = Training.find(UUID.fromString(id));
+        	return ok(views.html.front.training.render(training));
+        }
+        
+        public static Result trainingMore(){
+        	ExpressionList<Training> trainingEle = Training.find.where();
+            List<Training> trainingList = trainingEle.findList();
+            return ok(views.html.front.trainingMore.render(trainingList));
         }
 }
