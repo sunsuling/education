@@ -35,23 +35,39 @@ public class HomegController extends Controller {
             List<Training> trainingList = trainingEle.findList();
             return ok(views.html.front.shouye.render(contact,summary,centerDynamicList,trainingList));
         }
-        
+        /**
+         * 
+         * @param id
+         * @return中心动态
+         */
         public static Result centerDynamic(String id){
         	CenterDynamic centerDynamic = CenterDynamic.find(UUID.fromString(id));
         	return ok(views.html.front.centerDynamic.render(centerDynamic));
         }
-        
+        /**
+         * 中心动态列表
+         * @return
+         */
         public static Result centerDynamicMore(){
         	ExpressionList<CenterDynamic> centerDynamicEle = CenterDynamic.find.where();
             List<CenterDynamic> centerDynamicList = centerDynamicEle.findList();
         	return ok(views.html.front.centerDynamicMore.render(centerDynamicList));
         }
         
+        /**
+         * 培训信息
+         * @param id
+         * @return
+         */
         public static Result training(String id){
         	Training training = Training.find(UUID.fromString(id));
         	return ok(views.html.front.training.render(training));
         }
         
+        /**
+         * 培训信息列表
+         * @return
+         */
         public static Result trainingMore(){
         	ExpressionList<Training> trainingEle = Training.find.where();
             List<Training> trainingList = trainingEle.findList();
